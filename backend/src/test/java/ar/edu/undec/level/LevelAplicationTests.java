@@ -6,7 +6,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 //@SpringBootTest
 class LevelAplicationTests {
 
+<<<<<<< Updated upstream
     //@Test
+=======
+  //  @Test
+>>>>>>> Stashed changes
     void contextLoads() {
     }
 
