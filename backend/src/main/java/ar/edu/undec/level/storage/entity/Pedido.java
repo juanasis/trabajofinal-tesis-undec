@@ -46,6 +46,15 @@ public class Pedido implements Serializable {
         return fecha;
     }
     
+    public void setIdMozo(int idMozo){
+        this.idMozo = idMozo;
+    }
+    public void setIdMesa(int idMesa){
+        this.idMesa = idMesa;
+    }
+    public void setIdProducto(int idProducto){
+        this.idProducto = idProducto;
+    }
     
 
 }
