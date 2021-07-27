@@ -55,6 +55,16 @@ public class Pedido implements Serializable {
     public void setIdProducto(int idProducto){
         this.idProducto = idProducto;
     }
-    
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setEstado(EstadoPedido estado) {
+        this.estado = estado;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
 }
