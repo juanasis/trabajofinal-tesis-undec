@@ -16,7 +16,10 @@ public class PedidosService {
     public Response save(PedidoRequest pedido) {
         Response response = new Response();
         Pedido entity = new Pedido();
-        //hacer el constructor con los get
+        entity.setIdMozo(pedido.getIdMozo());
+        entity.setIdMesa(pedido.getIdMesa());
+        entity.setIdProducto(pedido.getIdProducto());
+   
         pedidosRepo.save(entity);
         response.setData("guardado");
         return response;
