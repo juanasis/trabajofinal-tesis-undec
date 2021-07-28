@@ -10,9 +10,9 @@ import java.util.Date;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Pedido implements Serializable {
     private Integer id;
-    private Integer idMozo;
-    private Integer idMesa;
-    private Integer idProducto;
+    private Integer idmozo;
+    private Integer idmesa;
+    private Integer idproducto;
     private EstadoPedido estado;
     private Date fecha;
     private static final long serialVersionUID = 1L;
@@ -24,18 +24,17 @@ public class Pedido implements Serializable {
     public Integer getId(){
         return id;
     }
-
-    @Column(name = "idMozo")
+    @Column(name = "idmozo")
     public Integer getIdMozo() {
-        return idMozo;
+        return idmozo;
     }
-    @Column(name = "idMesa")
+    @Column(name = "idmesa")
     public Integer getIdMesa() {
-        return idMesa;
+        return idmesa;
     }
-    @Column(name = "idProducto")
+    @Column(name = "idproducto")
     public Integer getIdProducto() {
-        return idProducto;
+        return idproducto;
     }
     @Column(name = "estado")
     public EstadoPedido getEstado() {
@@ -45,19 +44,21 @@ public class Pedido implements Serializable {
     public Date getFecha() {
         return fecha;
     }
-    
-    public void setIdMozo(int idMozo){
-        this.idMozo = idMozo;
-    }
-    public void setIdMesa(int idMesa){
-        this.idMesa = idMesa;
-    }
-    public void setIdProducto(int idProducto){
-        this.idProducto = idProducto;
-    }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public void setIdMozo(Integer idmozo) {
+        this.idmozo = idmozo;
+    }
+
+    public void setIdMesa(Integer idmesa) {
+        this.idmesa = idmesa;
+    }
+
+    public void setIdProducto(Integer idproducto) {
+        this.idproducto = idproducto;
     }
 
     public void setEstado(EstadoPedido estado) {

@@ -25,6 +25,12 @@ public class PedidosController {
         Response response = pedidosService.save(request);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+    @GetMapping
+    public ResponseEntity<Response> getPedidos(){
+        Response response;
+        response = pedidosService.findAll();
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
 
 }
