@@ -19,12 +19,10 @@ public class PedidosService {
     public Response save(PedidoRequest pedidos) {
         Response response = new Response();
         Pedido entity = new Pedido();
-
         entity.setIdMozo(pedidos.getIdMozo());
         entity.setIdMesa(pedidos.getIdMesa());
         entity.setIdProducto(pedidos.getIdProducto());
         entity.setEstado(EstadoPedido.ENCOLA);
-   
         pedidosRepo.save(entity);
         response.setData("guardado");
         return response;
@@ -33,9 +31,10 @@ public class PedidosService {
     public Response findAll() {
         Response  response = new Response();
         List<Pedido> pedidosList = pedidosRepo.findAll();
-        if(pedidosList.isEmpty())
+        /*if(pedidosList.isEmpty())
             response.setMessage("No hay Pedidos");
-        else response.setData(pedidosList);
+        else */
+        response.setData(pedidosList);
         return response;
     }
 }
