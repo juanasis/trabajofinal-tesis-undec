@@ -2,3 +2,13 @@
 backend/.idea/
 backend/target
 backend/pom.xml
+
+.idea/.name
+
+*.xml
+
+*.meta
+
+*.iml
+
+*.class
