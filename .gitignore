@@ -12,3 +12,11 @@ backend/pom.xml
 *.iml
 
 *.class
+
+backend/src/main/resources/
+
+*.lst
+
+*.properties
+
+*.txt

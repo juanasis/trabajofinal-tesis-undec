@@ -5,9 +5,11 @@ import ar.edu.undec.level.controller.dto.Response;
 import ar.edu.undec.level.storage.entity.EstadoPedido;
 import ar.edu.undec.level.storage.entity.Pedido;
 import ar.edu.undec.level.storage.repository.PedidosRepository;
+import ch.qos.logback.core.net.SyslogOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -18,11 +20,13 @@ public class PedidosService {
 
     public Response save(PedidoRequest pedidos) {
         Response response = new Response();
+        System.out.println(pedidos.getIdMesa()+" "+pedidos.getIdMozo()+" "+pedidos.getIdProducto());
         Pedido entity = new Pedido();
         entity.setIdMozo(pedidos.getIdMozo());
         entity.setIdMesa(pedidos.getIdMesa());
         entity.setIdProducto(pedidos.getIdProducto());
         entity.setEstado(EstadoPedido.ENCOLA);
+        entity.setFecha(nuevaFecha());
         pedidosRepo.save(entity);
         response.setData("guardado");
         return response;
@@ -30,11 +34,15 @@ public class PedidosService {
 
     public Response findAll() {
         Response  response = new Response();
-        List<Pedido> pedidosList = pedidosRepo.findAll();
-        /*if(pedidosList.isEmpty())
+        List<Pedido> pedidoList = pedidosRepo.findAll();
+        if(pedidoList.isEmpty())
             response.setMessage("No hay Pedidos");
-        else */
-        response.setData(pedidosList);
+        else
+        response.setData(pedidoList);
         return response;
+    }
+    private Date nuevaFecha(){
+        System.out.println(new Date());
+        return new Date();
     }
 }
