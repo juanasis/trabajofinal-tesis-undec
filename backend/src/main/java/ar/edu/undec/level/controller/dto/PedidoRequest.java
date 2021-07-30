@@ -1,25 +1,25 @@
 package ar.edu.undec.level.controller.dto;
 
 public class PedidoRequest {
-    private Integer idMozo;
-    private Integer idMesa;
-    private Integer idProducto;
+    private Integer idmozo;
+    private Integer idmesa;
+    private Integer idproducto;
 
     public Integer getIdMozo() {
-        return idMozo;
+        return idmozo;
     }
 
     public Integer getIdMesa() {
-        return idMesa;
+        return idmesa;
     }
 
     public Integer getIdProducto() {
-        return idProducto;
+        return idproducto;
     }
 
-    public PedidoRequest(Integer idMozo, Integer idMesa, Integer idProducto) {
-        this.idMozo = idMozo;
-        this.idMesa = idMesa;
-        this.idProducto = idProducto;
+    public PedidoRequest(Integer idmozo, Integer idmesa, Integer idproducto) {
+        this.idmozo = idmozo;
+        this.idmesa = idmesa;
+        this.idproducto = idproducto;
     }
 }
