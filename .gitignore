@@ -20,3 +20,5 @@ backend/src/main/resources/
 *.properties
 
 *.txt
+
+frontend/e2e/
