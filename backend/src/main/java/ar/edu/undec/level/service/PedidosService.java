@@ -45,4 +45,13 @@ public class PedidosService {
         System.out.println(new Date());
         return new Date();
     }
+
+    public Response delete(Integer id) {
+            Response response = new Response();
+            pedidosRepo.delete(pedidosRepo.getOne(id));
+            response.setData("ok");
+            return response;
+
+
+    }
 }

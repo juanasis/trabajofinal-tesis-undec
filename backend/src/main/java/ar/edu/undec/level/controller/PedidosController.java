@@ -25,12 +25,19 @@ public class PedidosController {
         Response response = pedidosService.save(request);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<Response> getPedidos(){
         Response response;
         response = pedidosService.findAll();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Response> delete(@PathVariable(value = "id") Integer pedidoId) {
+        Response response = pedidosService.delete(pedidoId);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+
 
 
 }
