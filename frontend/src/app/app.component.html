@@ -1,49 +1,10 @@
 <nav class="navbar navbar-dark bg-primary">
-  <a class="navbar-brand" href="/">
-    Pedidos Level        
- </a>  <img  width="100" alt="Undec logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS8syNsnqsjxn2DlFg_bHTf-efpGUisHZqN8g&usqp=CAU" >
+  <a class="navbar-brand" href="">
+      Level-Pedidos
+ </a>
+ <img  width="200" alt="Undec logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS8syNsnqsjxn2DlFg_bHTf-efpGUisHZqN8g&usqp=CAU" >
+ 
 
 </nav>
-
-<div class="conteiner">
-  <div class="row">
-    <div class="col-md-8 mt-4">
-      Pedidos-Estado Pedido
-      <ul class="list-group">
-        <li 
-          *ngFor="let pedido of pedidosArray"
-           class="list-group-item list-group-item-action"
-           (click)="openForEdit(pedido)"
-           [class.active]="pedido == selectedPedido"
-           >
-           <span class="bg-primary">{{pedido.id}} </span> {{pedido.estado}} 
-            
-        </li>
-      </ul>
-      <div class="card mt-4">
-        <div class="card-body">
-          <div class="card-title">
-            Realiza tu Pedido
-
-          </div>
-          <div class="form-group mt-4">
-            <input type="text" [(ngModel)]="selectedPedido.idmozo" placeholder="Inserta Id Mozo" class="form-control">
-          </div>
-          <div class="form-group mt-4">
-            <input type="text" [(ngModel)]="selectedPedido.idmesa" placeholder="Inserta Id Mesa" class="form-control">
-          </div>
-          <div class="form-group mt-4">
-            <input type="text" [(ngModel)]="selectedPedido.idproducto" placeholder="Inserta Id Producto" class="form-control">
-          </div>
-          <button (click)="addOnEdit()" class="btn btn-primary mt-4">
-            Guardar
-          </button>
-          <button (click)="borrar()" class="btn btn-secundary">
-            Borrar
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4"></div>
-  </div>
-</div>
+<app-menu></app-menu>
+<router-outlet></router-outlet>
