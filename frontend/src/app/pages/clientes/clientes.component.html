@@ -4,53 +4,48 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="clientes.component.css">
 </head>
-<div class="conteiner">
+<div class="conteiner mt-3">
      Nuevo Pedido
+     <hr>
         <div class="grid">
           <div class="listado">Tu Pedido
-           <p> Aqui se listaran los productos seleccionados
-           </p>
-           <p>Cant| producto| Precio</p>
+            <hr>
+            <p>Cant| producto| Precio</p>
+           <hr>
            <p>1 Coca Cola   ---------------------- $200</p>
            <p>1 Agua saborizada   ---------------- $180</p>
+           <button class="btn btn-success btn-lg btn-block">Confirmar</button>
           </div>
           <div>gaseosas
            <img src="..\..\..\assets/productos/cocacola.jpg" style="width:200px;height: 200px;">
-           <button>Agregar</button>
+           <button type="button" class="btn btn-primary">Agregar</button>
           </div>
           <div>aguas
             <img src="..\..\..\assets/productos/agua.jpg" style="width:200px;height: 200px;">
-            <button>Agregar</button>
+            <button class="btn btn-primary">Agregar</button>
           </div>
           <div>saborizadas
             <img src="..\..\..\assets/productos/aquarius.jpg" style="width:200px;height: 200px;">
-            <button>Agregar</button>
+            <button class="btn btn-primary">Agregar</button>
           </div>
           <div>tragos
             <img src="..\..\..\assets/productos/tragos.jpg" style="width:200px;height: 200px;">
-            <button>Agregar</button>
+            <button class="btn btn-primary">Agregar</button>
           </div>
          <div>licuados
             <img src="..\..\..\assets/productos/licuado.jpg" style="width:200px;height: 200px;">
-            <button>Agregar</button>
+            <button class="btn btn-primary">Agregar</button>
           </div>
           <div>cervezas
             <img src="..\..\..\assets/productos/budweiser.jpg" style="width:200px;height: 200px;">
-            <button>Agregar</button>
+            <button class="btn btn-primary">Agregar</button>
           </div>
           <div>vinos
             <img src="..\..\..\assets/productos/vino.jpg" style="width:200px;height: 200px;">
-            <button>Agregar</button>
+            <button class="btn btn-primary">Agregar</button>
           </div>
-          
+         
         </div> 
-        <ul class="list-group">
-          <li 
-            *ngFor="let producto of productos"
-             class="list-group-item list-group-item-action"
-              >
-                          
-          </li>
-        </ul>
+        
        
 </div>

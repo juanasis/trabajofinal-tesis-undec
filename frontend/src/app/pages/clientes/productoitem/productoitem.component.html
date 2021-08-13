@@ -1,1 +1,8 @@
-<span> {{producto.nombre}}</span> $ {{producto.precio}}
+<ul class="list-group">
+    <li 
+      *ngFor="let producto of productos"
+       class="list-group-item list-group-item-action"
+        >
+         <app-clientes [producto]="producto"></app-clientes>
+    </li>
+  </ul>
