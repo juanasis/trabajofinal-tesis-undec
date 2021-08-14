@@ -5,5 +5,6 @@ export class Producto {
     cantidad: number;
     categoria: String;
     precio: number;
+    imgpath: String;
      
 }
