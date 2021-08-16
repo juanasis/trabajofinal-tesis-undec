@@ -10,17 +10,17 @@
         <div class="grid">
           <div class="listado">Tu Pedido
             <hr>
-            <p>Cant|  Descripcion del producto|Precio</p>
+            <p>Cantidad|  Descripcion del producto|Precio</p>
            <hr>
            
-           <p *ngIf="pedidovista.producto != null">{{pedidovista.cantidad}} {{pedidovista.producto.nombre}} ${{pedidovista.producto.precio}} </p>
+           <p *ngIf="pedidovista.producto != null">{{pedidovista.cantidad}} {{pedidovista.producto.nombre}}------------------------------------ ${{pedidovista.producto.precio}} </p>
 
 
            <button (click)="guardarpedido()" class="btn btn-success btn-lg btn-block">Confirmar</button>
           </div >
-         <ul>
+         <ul   class="grid" >
            <li *ngFor="let producto of productos">
-            <div>{{producto.nombre}}{{producto.precio}}
+            <div>{{producto.nombre}} {{producto.descripcion}} - $ {{producto.precio}}
               <img src={{producto.imgpath}} style="width:200px;height: 200px;">
               <button (click)="agregarProducto(producto)" type="button" class="btn btn-primary" >Agregar</button>
              </div>
