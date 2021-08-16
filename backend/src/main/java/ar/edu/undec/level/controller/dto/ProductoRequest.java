@@ -6,32 +6,64 @@ public class ProductoRequest {
     public int cantidad;
     public String categoria;
     public double precio;
-
-    public ProductoRequest(String nombre, String descripcion, int cantidad, String categoria, double precio) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.cantidad = cantidad;
-        this.categoria = categoria;
-        this.precio = precio;
-    }
+    public String imgpath;
 
     public String getNombre() {
         return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDescripcion() {
         return descripcion;
     }
 
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public int getCantidad() {
         return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     public String getCategoria() {
         return categoria;
     }
 
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
     public double getPrecio() {
         return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public String getImgpath() {
+        return imgpath;
+    }
+
+    public void setImgpath(String imgpath) {
+        this.imgpath = imgpath;
+    }
+
+    public ProductoRequest(String nombre, String descripcion, int cantidad, String categoria, double precio, String imgpath) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.cantidad = cantidad;
+        this.categoria = categoria;
+        this.precio = precio;
+        this.imgpath = imgpath;
+
+
     }
 }

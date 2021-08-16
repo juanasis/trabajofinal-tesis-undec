@@ -20,6 +20,8 @@ public class Producto implements Serializable {
    private Integer cantidad;
     @Column(name = "categoria")
    private  String categoria;
+    @Column(name = "imgpath")
+    private  String imgpath;
     @Column(name = "precio")
    private Double precio;
 
@@ -69,5 +71,13 @@ public class Producto implements Serializable {
 
     public void setPrecio(Double precio) {
         this.precio = precio;
+    }
+
+    public String getImgpath() {
+        return imgpath;
+    }
+
+    public void setImgpath(String imgpath) {
+        this.imgpath = imgpath;
     }
 }
