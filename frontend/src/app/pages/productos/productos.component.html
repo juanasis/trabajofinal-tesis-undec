@@ -1,1 +1,35 @@
-<p>productos works!</p>
+<h1>
+    Productos
+</h1>
+<hr>
+ 
+<div class="container">
+  <div class="row g-2">
+    <div class="col-3">
+      <div (click)="listarBebidas()" class="p-3 border bg-light">Bebidas </div>
+    </div> 
+    <div class="col-3">
+      <div class="p-3 border bg-light">Cafeteria</div>
+    </div>
+    <div class="col-3">
+      <div class="p-3 border bg-light">Menu</div>
+    </div>
+    <div class="col-3">
+      <div class="p-3 border bg-light">Postres</div>
+    </div>
+  </div>
+</div>
+<p></p>
+<ul class="list-group">
+    <li 
+      *ngFor="let producto of productosArray"
+       class="list-group-item list-group-item-action"
+       (click)="openForEdit(producto)"
+       [class.active]="producto == selectedproducto"
+       >
+       <span class="font-italic">{{producto.nombre}} {{producto.descripcion}} </span> 
+        - $ 
+       <span class="font-italic">{{producto.precio}} </span>
+        
+    </li>
+  </ul>
