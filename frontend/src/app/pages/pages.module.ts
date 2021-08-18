@@ -6,6 +6,7 @@ import { ClientesComponent } from "./clientes/clientes.component";
 import { CocinerosComponent } from "./cocineros/cocineros.component";
 import { MozosComponent } from "./mozos/mozos.component";
 import { ProductoitemComponent } from './clientes/productoitem/productoitem.component';
+import { AdministradorComponent } from './administrador/administrador.component';
 
 
 
@@ -13,7 +14,9 @@ import { ProductoitemComponent } from './clientes/productoitem/productoitem.comp
 @NgModule({
     declarations: [
       
-      ProductoitemComponent],
+      ProductoitemComponent,
+      
+      AdministradorComponent],
     imports: [
       CommonModule
     ],
