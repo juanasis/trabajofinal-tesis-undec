@@ -5,6 +5,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { MenuComponent } from "./components/menu/menu.component";
+import { AdministradorComponent } from "./pages/administrador/administrador.component";
 import { CajerosComponent } from "./pages/cajeros/cajeros.component";
 import { ClientesComponent } from "./pages/clientes/clientes.component";
 import { CocinerosComponent } from "./pages/cocineros/cocineros.component";
@@ -22,7 +23,8 @@ import { ProductosComponent } from "./pages/productos/productos.component";
     CajerosComponent,
     MozosComponent,
     CocinerosComponent,
-    ClientesComponent
+    ClientesComponent,
+    AdministradorComponent
   ],
   imports: [
     BrowserModule,
