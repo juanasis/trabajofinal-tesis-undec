@@ -25,6 +25,7 @@ public class ProductosService {
         entity.setCantidad(productos.getCantidad());
         entity.setCategoria(productos.getCategoria());
         entity.setPrecio(productos.getPrecio());
+        entity.setImgpath(productos.getImgpath());
         productosRepo.save(entity);
         response.setData("guardado");
         return response;

@@ -5,7 +5,7 @@ import ar.edu.undec.level.controller.dto.Response;
 import ar.edu.undec.level.storage.entity.EstadoPedido;
 import ar.edu.undec.level.storage.entity.Pedido;
 import ar.edu.undec.level.storage.repository.PedidosRepository;
-import ch.qos.logback.core.net.SyslogOutputStream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +27,7 @@ public class PedidosService {
         entity.setIdProducto(pedidos.getIdProducto());
         entity.setEstado(EstadoPedido.ENCOLA);
         entity.setFecha(nuevaFecha());
-        entity.setIditempedido(1);
+        entity.setIditempedido(pedidos.getIditempedido());
         pedidosRepo.save(entity);
         response.setData("guardado");
         return response;
