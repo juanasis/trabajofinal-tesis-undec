@@ -17,6 +17,7 @@ export class ClientesComponent implements OnInit {
   constructor(private http: HttpClient) {// private mozo: Mozo, private) {  
     this.pedido = new Pedido();
     this.pedidovista = new Pedidovista();
+    this.pedidovista.cantidad = 0;
     this.pedido.idmozo= 1;
     this.pedido.idmesa = 1;
     this.pedido.iditempedido = 1;
@@ -30,6 +31,10 @@ export class ClientesComponent implements OnInit {
     this.pedidovista.cantidad = 1;
   }
   guardarpedido(){
+    if(this.pedidovista.cantidad == 0){
+      alert("seleccione uno o mas productos");
+      console.log(this.pedidovista.cantidad);
+    }else if(confirm('Confirme su orden')){
     this.http.post("http://localhost:8080/pedidos/agregar", this.pedido).subscribe(
       data  => {
       console.log("POST Request is successful ", data);
@@ -41,6 +46,7 @@ export class ClientesComponent implements OnInit {
       }
       
     )
+    }
     
   }
   /*ngOnInit(): void {
