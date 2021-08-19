@@ -21,7 +21,7 @@ export class ProductosComponent implements OnInit {
   listarBebidas(){
     this.productosArray.forEach(element => {
       if (element.categoria = 'bebidas') {
-        this.bebidasArray.push(element);        
+        this.bebidasArray.push(element)        
       }
       console.log("click");
     });

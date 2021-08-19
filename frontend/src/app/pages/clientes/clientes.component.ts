@@ -19,6 +19,7 @@ export class ClientesComponent implements OnInit {
     this.pedidovista = new Pedidovista();
     this.pedido.idmozo= 1;
     this.pedido.idmesa = 1;
+    this.pedido.iditempedido = 1;
   }
 
   agregarProducto(producto: Producto){

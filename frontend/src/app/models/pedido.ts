@@ -3,6 +3,7 @@ export class Pedido {
     idmozo: number;
     idmesa: number = 0;
     idproducto: number;
+    iditempedido: number;
     estado: String;
     fecha: Date;
 }

@@ -27,6 +27,7 @@ public class PedidosService {
         entity.setIdProducto(pedidos.getIdProducto());
         entity.setEstado(EstadoPedido.ENCOLA);
         entity.setFecha(nuevaFecha());
+        entity.setIditempedido(1);
         pedidosRepo.save(entity);
         response.setData("guardado");
         return response;
