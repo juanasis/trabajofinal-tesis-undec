@@ -9,6 +9,8 @@ import { ProductoitemComponent } from './clientes/productoitem/productoitem.comp
       
       ProductoitemComponent,
       
+       
+      
          ],
     imports: [
       CommonModule

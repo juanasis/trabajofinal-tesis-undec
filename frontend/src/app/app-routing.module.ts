@@ -5,6 +5,9 @@ import { CajerosComponent } from './pages/cajeros/cajeros.component';
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { CocinerosComponent } from './pages/cocineros/cocineros.component';
 import { MozosComponent } from './pages/mozos/mozos.component';
+import { LoginComponent } from './pages/login/login.component';
+import { NuevoComponent } from './pages/productos/nuevo/nuevo.component';
+import { EditarComponent } from './pages/productos/editar/editar.component';
  
 const routes: Routes = [  {
   path: 'cajeros',
@@ -26,6 +29,18 @@ const routes: Routes = [  {
   component: ClientesComponent
 },
 {
+  path: 'login',
+  component: LoginComponent
+},
+{
+  path: 'nuevo',
+  component: NuevoComponent
+},
+{
+  path: 'editar',
+  component: EditarComponent
+},
+{
   path: '**',
   redirectTo: 'Inicio'
 } ];
@@ -35,3 +50,4 @@ const routes: Routes = [  {
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const routingComponents = [LoginComponent, NuevoComponent, EditarComponent]
