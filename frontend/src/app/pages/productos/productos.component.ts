@@ -34,5 +34,11 @@ export class ProductosComponent implements OnInit {
        console.log(this.productosArray); })
 
   }
+  nuevoProducto(){
+    
+  }
 
+  editarProducto(id){
+    console.log(id);
+  }
 }
