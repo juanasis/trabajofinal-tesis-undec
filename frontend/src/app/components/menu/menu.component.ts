@@ -16,7 +16,7 @@ export class MenuComponent implements OnInit {
       name: 'Clientes'
     },
     {
-      path: '/administrador', name: 'Administrador'
+      path: '/administrador', name: 'Administracion'
     },
     {
       path: '/cocineros',
