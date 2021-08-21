@@ -1,6 +1,6 @@
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { ReactiveFormsModule,FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule, routingComponents} from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -13,6 +13,7 @@ import { MozosComponent } from "./pages/mozos/mozos.component";
 import { PagesModule } from "./pages/pages.module";
 import { PedidosComponent } from "./pages/pedidos/pedidos.component";
 import { ProductosComponent } from "./pages/productos/productos.component";
+ 
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { ProductosComponent } from "./pages/productos/productos.component";
     AppRoutingModule,  
     PagesModule,    
     FormsModule,    
-    HttpClientModule
+    HttpClientModule,ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
