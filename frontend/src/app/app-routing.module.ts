@@ -37,7 +37,7 @@ const routes: Routes = [  {
   component: NuevoComponent
 },
 {
-  path: 'editar',
+  path: 'editar/:id',
   component: EditarComponent
 },
 {

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Producto } from 'src/app/models/producto';
 
 
@@ -16,7 +17,7 @@ export class ProductosComponent implements OnInit {
   oldproducto: Producto = new Producto();
   selectedProducto: Producto = new Producto();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   listarBebidas(){
     this.productosArray.forEach(element => {
@@ -35,10 +36,10 @@ export class ProductosComponent implements OnInit {
 
   }
   nuevoProducto(){
-    
+    this.router.navigate(['nuevo']);
   }
 
   editarProducto(id){
-    console.log(id);
+    this.router.navigate(['editar',id]);
   }
 }
