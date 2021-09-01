@@ -13,9 +13,7 @@
             <p>Cantidad|  Descripcion del producto|Precio</p>
            <hr>
            
-           <p *ngIf="pedidovista.producto != null">{{pedidovista.cantidad}} {{pedidovista.producto.nombre}}------------------------------------ ${{pedidovista.producto.precio}} </p>
-
-
+           <p *ngIf="pedidovista.producto != null">{{pedidovista.cantidad}} {{pedidovista.producto.nombre}}-------------------- ${{pedidovista.producto.precio}} </p>
            <button (click)="guardarpedido()" class="btn btn-success btn-lg btn-block">Confirmar</button>
           </div >
          <ul   class="grid" >
