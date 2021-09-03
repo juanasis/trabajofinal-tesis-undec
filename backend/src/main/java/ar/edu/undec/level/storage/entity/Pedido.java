@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -12,9 +13,9 @@ public class Pedido implements Serializable {
     private Integer id;
     private Integer idmozo;
     private Integer idmesa;
-
     private EstadoPedido estado;
     private Date fecha;
+    private Collection<ItemPedido> itemsList;
     private static final long serialVersionUID = 1L;
 
 
@@ -60,6 +61,15 @@ public class Pedido implements Serializable {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    @OneToMany(mappedBy = "pedido")
+    public Collection<ItemPedido> getItemsList() {
+        return itemsList;
+    }
+
+    public void setitemsList(Collection<ItemPedido> itemsList) {
+        this.itemsList = itemsList;
     }
 
 }

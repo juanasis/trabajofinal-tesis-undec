@@ -24,10 +24,10 @@ public class PedidosService {
         Pedido entity = new Pedido();
         entity.setIdMozo(pedidos.getIdMozo());
         entity.setIdMesa(pedidos.getIdMesa());
-        entity.setIdProducto(pedidos.getIdProducto());
+
         entity.setEstado(EstadoPedido.ENCOLA);
         entity.setFecha(nuevaFecha());
-        entity.setIditempedido(pedidos.getIditempedido());
+
         pedidosRepo.save(entity);
         response.setData("guardado");
         return response;

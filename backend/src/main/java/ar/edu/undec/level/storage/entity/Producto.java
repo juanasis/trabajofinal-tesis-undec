@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -24,6 +25,7 @@ public class Producto implements Serializable {
     private  String imgpath;
     @Column(name = "precio")
    private Double precio;
+   private Collection<ItemPedido> pedidosList;
 
     public Integer getId() {
         return id;
@@ -79,5 +81,13 @@ public class Producto implements Serializable {
 
     public void setImgpath(String imgpath) {
         this.imgpath = imgpath;
+    }
+    @OneToMany(mappedBy = "producto")
+    public Collection<ItemPedido> getPedidosList() {
+        return pedidosList;
+    }
+
+    public void setPedidosList(Collection<ItemPedido> pedidosList) {
+        this.pedidosList = pedidosList;
     }
 }
