@@ -12,8 +12,7 @@ public class Pedido implements Serializable {
     private Integer id;
     private Integer idmozo;
     private Integer idmesa;
-    private Integer idproducto;
-    private Integer iditempedido;
+
     private EstadoPedido estado;
     private Date fecha;
     private static final long serialVersionUID = 1L;
@@ -33,10 +32,7 @@ public class Pedido implements Serializable {
     public Integer getIdMesa() {
         return idmesa;
     }
-    @Column(name = "idproducto")
-    public Integer getIdProducto() {
-        return idproducto;
-    }
+
     @Column(name = "estado")
     public EstadoPedido getEstado() {
         return estado;
@@ -58,10 +54,6 @@ public class Pedido implements Serializable {
         this.idmesa = idmesa;
     }
 
-    public void setIdProducto(Integer idproducto) {
-        this.idproducto = idproducto;
-    }
-
     public void setEstado(EstadoPedido estado) {
         this.estado = estado;
     }
@@ -69,12 +61,5 @@ public class Pedido implements Serializable {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    @Column(name = "iditempedido")
-    public Integer getIditempedido() {
-        return iditempedido;
-    }
 
-    public void setIditempedido(Integer iditempedido) {
-        this.iditempedido = iditempedido;
-    }
 }
