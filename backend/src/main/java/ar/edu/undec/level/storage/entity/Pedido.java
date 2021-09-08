@@ -10,6 +10,7 @@ import java.util.Date;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Pedido implements Serializable {
+
     private Integer id;
     private Integer idmozo;
     private Integer idmesa;
@@ -43,6 +44,11 @@ public class Pedido implements Serializable {
         return fecha;
     }
 
+    @OneToMany(mappedBy = "pedido")
+    public Collection<ItemPedido> getItemsList() {
+        return itemsList;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -63,13 +69,10 @@ public class Pedido implements Serializable {
         this.fecha = fecha;
     }
 
-    @OneToMany(mappedBy = "pedido")
-    public Collection<ItemPedido> getItemsList() {
-        return itemsList;
-    }
 
     public void setitemsList(Collection<ItemPedido> itemsList) {
         this.itemsList = itemsList;
+
     }
 
 }

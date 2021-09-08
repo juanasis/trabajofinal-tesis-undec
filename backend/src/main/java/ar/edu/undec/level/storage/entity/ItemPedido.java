@@ -41,10 +41,10 @@ public class ItemPedido {
     public Integer getCantidad() {
         return cantidad;
     }
-
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
+
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne

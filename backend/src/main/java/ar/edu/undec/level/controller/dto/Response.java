@@ -1,21 +1,21 @@
 package ar.edu.undec.level.controller.dto;
 
 public class Response {
-    private int estado;
+    private int status;
     private String message;
     private Object data;
 
     public Response() {
-        this.estado = 0;
+        this.status = 0;
         this.message = "";
     }
 
-    public int getEstado() {
-        return estado;
+    public int getStatus() {
+        return status;
     }
 
-    public void setEstado(int estado) {
-        this.estado = estado;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getMessage() {
@@ -33,4 +33,5 @@ public class Response {
     public void setData(Object data) {
         this.data = data;
     }
+
 }

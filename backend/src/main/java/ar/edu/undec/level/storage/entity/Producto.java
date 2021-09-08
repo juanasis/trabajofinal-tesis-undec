@@ -9,76 +9,69 @@ import java.util.Collection;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Producto implements Serializable {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @Column(name = "nombre")
+   private Integer id;
    private String nombre;
-    @Column(name = "descripcion")
    private String descripcion;
-    @Column(name = "cantidad")
    private Integer cantidad;
-    @Column(name = "categoria")
    private  String categoria;
-    @Column(name = "imgpath")
-    private  String imgpath;
-    @Column(name = "precio")
+   private  String imgpath;
    private Double precio;
    private Collection<ItemPedido> pedidosList;
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
 
+    @Column(name = "nombre")
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    @Column(name = "descripcion")
     public String getDescripcion() {
         return descripcion;
     }
-
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
+    @Column(name = "cantidad")
     public Integer getCantidad() {
         return cantidad;
     }
-
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
 
+    @Column(name = "categoria")
     public String getCategoria() {
         return categoria;
     }
-
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
+    @Column(name = "precio")
     public Double getPrecio() {
         return precio;
     }
-
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
+    @Column(name = "imgpath")
     public String getImgpath() {
         return imgpath;
     }
-
     public void setImgpath(String imgpath) {
         this.imgpath = imgpath;
     }
@@ -86,7 +79,6 @@ public class Producto implements Serializable {
     public Collection<ItemPedido> getPedidosList() {
         return pedidosList;
     }
-
     public void setPedidosList(Collection<ItemPedido> pedidosList) {
         this.pedidosList = pedidosList;
     }
