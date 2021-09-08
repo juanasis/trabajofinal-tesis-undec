@@ -31,6 +31,16 @@ public class PedidosController {
         response = pedidosService.findAll();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Response> get(@PathVariable String id) {
+        Response response = pedidosService.findOneById(id);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @PutMapping
+    public ResponseEntity<Response> put(@RequestBody Object input) {
+        Response response = pedidosService.update(input);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Response> delete(@PathVariable(value = "id") Integer pedidoId) {
         Response response = pedidosService.delete(pedidoId);
