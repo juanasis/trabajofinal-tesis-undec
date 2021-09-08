@@ -5,18 +5,48 @@ import ar.edu.undec.level.controller.dto.Response;
 
 import ar.edu.undec.level.storage.entity.Producto;
 import ar.edu.undec.level.storage.repository.ProductosRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class ProductosService {
     @Autowired
     private ProductosRepository productosRepo;
+    static final Logger LOGGER = LoggerFactory.getLogger(ProductosService.class);
 
+    public Response findAll() {
+        Response  response = new Response();
+        List<Producto> productoList = productosRepo.findAll();
+        if(productoList.isEmpty())
+            response.setMessage("No hay Productos");
+        else
+            response.setData(productoList);
+        return response;
+    }
+    public Response findOneById(String id) {
+        Response response = new Response();
+        try {
+            ProductoRequest productoDTO = new ProductoRequest().getProductoDTO(productosRepo.findById(Integer.parseInt(id)).get());
+            response.setData(productoDTO);
 
+        } catch (NoSuchElementException e) {
+            LOGGER.error("No existe.");
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
+        return response;
+    }
     public Response save(ProductoRequest productos) {
         Response response = new Response();
         Producto entity = new Producto();
@@ -31,15 +61,7 @@ public class ProductosService {
         return response;
     }
 
-    public Response findAll() {
-        Response  response = new Response();
-        List<Producto> productoList = productosRepo.findAll();
-        if(productoList.isEmpty())
-            response.setMessage("No hay Productos");
-        else
-        response.setData(productoList);
-        return response;
-    }
+
     private Date nuevaFecha(){
         System.out.println(new Date());
         return new Date();
@@ -47,10 +69,33 @@ public class ProductosService {
 
     public Response delete(Integer id) {
             Response response = new Response();
-            productosRepo.delete(productosRepo.getOne(id));
-            response.setData("ok");
-            return response;
+        try {
+            Producto producto = productosRepo.findById(id).get();
+            productosRepo.save(producto);
+
+            response.setMessage("Eliminado correctamente.");
+
+        } catch (NoSuchElementException e) {
+            LOGGER.error("No existe.");
+        } catch (Exception e) {
+            LOGGER.error("Error general.");
+            throw e;
+        }
+        return response;
 
 
     }
+    public Response findByName(String nombre) {
+        Response response = new Response();
+        try {
+            List<Producto> productoList = productosRepo.findAllByNombreContaining(nombre);
+            response.setData(productoList);
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
+        return response;
+    }
+
 }

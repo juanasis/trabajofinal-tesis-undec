@@ -1,5 +1,7 @@
 package ar.edu.undec.level.controller.dto;
 
+import ar.edu.undec.level.storage.entity.Producto;
+
 public class ProductoRequest {
     public String nombre;
     public String descripcion;
@@ -7,6 +9,10 @@ public class ProductoRequest {
     public String categoria;
     public double precio;
     public String imgpath;
+
+    public ProductoRequest() {
+
+    }
 
     public String getNombre() {
         return nombre;
@@ -56,6 +62,19 @@ public class ProductoRequest {
         this.imgpath = imgpath;
     }
 
+    public ProductoRequest getProductoDTO(Producto producto){
+        ProductoRequest productoRequest = new ProductoRequest();
+        productoRequest.setCantidad(producto.getCantidad());
+        productoRequest.setCategoria(producto.getCategoria());
+        productoRequest.setDescripcion(producto.getDescripcion());
+        productoRequest.setImgpath(producto.getImgpath());
+        productoRequest.setPrecio(producto.getPrecio());
+        productoRequest.setNombre(producto.getNombre());
+
+        return productoRequest;
+    }
+
+
     public ProductoRequest(String nombre, String descripcion, int cantidad, String categoria, double precio, String imgpath) {
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -63,7 +82,6 @@ public class ProductoRequest {
         this.categoria = categoria;
         this.precio = precio;
         this.imgpath = imgpath;
-
-
     }
+
 }

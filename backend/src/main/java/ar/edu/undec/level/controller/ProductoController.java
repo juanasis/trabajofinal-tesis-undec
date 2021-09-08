@@ -21,20 +21,36 @@ public class ProductoController {
     @Autowired
     private ProductosService productosService;
 
-    @PostMapping("/agregar")
-    public ResponseEntity<Response> save(@Valid @RequestBody ProductoRequest request  ){
-        Response response = productosService.save(request);
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
     @GetMapping()
     public ResponseEntity<Response> getProductos(){
         Response response;
         response = productosService.findAll();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Response> get(@PathVariable String id) {
+        Response response = productosService.findOneById(id);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @PutMapping
+    public ResponseEntity<Response> put(@RequestBody ProductoRequest input) throws Exception {
+        Response response = productosService.update(input);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @PostMapping("/agregar")
+    public ResponseEntity<Response> save(@Valid @RequestBody ProductoRequest request  ){
+        Response response = productosService.save(request);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Response> delete(@PathVariable(value = "id") Integer productoId) {
         Response response = productosService.delete(productoId);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @GetMapping("/nombre/{nombre}")
+    public ResponseEntity<Response> list(@PathVariable String nombre) {
+        Response response = productosService.findByName(nombre);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
