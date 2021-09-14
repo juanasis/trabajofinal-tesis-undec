@@ -1,14 +1,19 @@
 package ar.edu.undec.level.service;
 
+import ar.edu.undec.level.controller.dto.ItemPedidoDto;
 import ar.edu.undec.level.controller.dto.PedidoRequest;
 import ar.edu.undec.level.controller.dto.Response;
 import ar.edu.undec.level.storage.entity.EstadoPedido;
+import ar.edu.undec.level.storage.entity.ItemPedido;
 import ar.edu.undec.level.storage.entity.Pedido;
 import ar.edu.undec.level.storage.repository.PedidosRepository;
+import ar.edu.undec.level.storage.repository.ProductosRepository;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -17,17 +22,19 @@ import java.util.NoSuchElementException;
 public class PedidosService {
     @Autowired
     private PedidosRepository pedidosRepo;
+    @Autowired
+    private ProductosRepository productosRepo;
     static final Logger LOGGER = LoggerFactory.getLogger(PedidosService.class);
 
 
-    public Response save(PedidoRequest pedidos) {
+    public Response save(PedidoRequest request) {
         Response response = new Response();
-        System.out.println(pedidos.getIdMesa()+" "+pedidos.getIdMozo()+" "+pedidos.getIdProducto());
         Pedido entity = new Pedido();
-        entity.setIdMozo(pedidos.getIdMozo());
-        entity.setIdMesa(pedidos.getIdMesa());
+        entity.setIdMozo(request.getIdMozo());
+        entity.setIdMesa(request.getIdMesa());
         entity.setEstado(EstadoPedido.ENCOLA);
         entity.setFecha(nuevaFecha());
+        entity.setitemsList(getListaItems(request, entity));
 
         try {
            entity = pedidosRepo.save(entity);
@@ -39,6 +46,18 @@ public class PedidosService {
            throw e;
        }
         return response;
+    }
+
+    private List<ItemPedido> getListaItems(PedidoRequest pedidoRequest, Pedido entity) {
+        List<ItemPedido> result = new ArrayList<>();
+
+        for (ItemPedidoDto itemPedidoDto: pedidoRequest.getItems()) {
+            ItemPedido item = new ItemPedido(itemPedidoDto);
+            item.setPedido(entity);
+            item.setProducto(productosRepo.getOne(itemPedidoDto.getProducto_id()));
+            result.add(item);
+        }
+        return result;
     }
    /*  public Response save(Pedido pedido) {
        Response response = new Response();
@@ -57,8 +76,8 @@ public class PedidosService {
     public Response findAll() {
         Response  response = new Response();
         try {
-            List<Pedido> pedidoList = pedidosRepo.findAll();
-            response.setData(pedidoList);
+            List<Pedido> pedidosList = pedidosRepo.findAll();
+            response.setData(pedidosList);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
             e.printStackTrace();
@@ -66,6 +85,7 @@ public class PedidosService {
         }
         return response;
     }
+    //Formatear fecha
     private Date nuevaFecha(){
         System.out.println(new Date());
         return new Date();

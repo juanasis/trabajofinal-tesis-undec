@@ -21,12 +21,7 @@ export class EditarComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    let productoid = this.activaterouter.snapshot.paramMap.get('id');
-    console.log(productoid);
-    this.api.getSingleProducto(productoid).subscribe(data =>{
-      this.datosProducto = data[0];
-      console.log(this.datosProducto);
-    })
+    
   }
   
   salir(){

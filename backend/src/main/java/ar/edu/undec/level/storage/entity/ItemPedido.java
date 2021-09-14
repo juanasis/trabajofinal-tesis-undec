@@ -1,5 +1,6 @@
 package ar.edu.undec.level.storage.entity;
 
+import ar.edu.undec.level.controller.dto.ItemPedidoDto;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -15,6 +16,15 @@ public class ItemPedido {
     private Integer cantidad;
     private Pedido pedido;
     private Producto producto;
+
+    public ItemPedido(ItemPedidoDto itemPedidoDto) {
+        this.cantidad = itemPedidoDto.getCantidad();
+        this.precio = itemPedidoDto.getPrecio();
+    }
+
+    public ItemPedido() {
+
+    }
 
     @Id
     @Column(name = "id")
@@ -67,4 +77,6 @@ public class ItemPedido {
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
+
+
 }

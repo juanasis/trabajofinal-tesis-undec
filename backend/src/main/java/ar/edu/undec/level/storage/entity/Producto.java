@@ -75,6 +75,8 @@ public class Producto implements Serializable {
     public void setImgpath(String imgpath) {
         this.imgpath = imgpath;
     }
+
+
     @OneToMany(mappedBy = "producto")
     public Collection<ItemPedido> getPedidosList() {
         return pedidosList;

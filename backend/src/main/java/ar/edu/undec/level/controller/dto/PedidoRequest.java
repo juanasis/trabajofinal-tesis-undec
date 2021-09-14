@@ -1,10 +1,10 @@
 package ar.edu.undec.level.controller.dto;
+import java.util.List;
 
 public class PedidoRequest {
     private Integer idmozo;
     private Integer idmesa;
-    private Integer idproducto;
-    private Integer iditempedido;
+    private List<ItemPedidoDto> items;
 
 
     public Integer getIdMozo() {
@@ -15,22 +15,13 @@ public class PedidoRequest {
         return idmesa;
     }
 
-    public Integer getIditempedido() {
-        return iditempedido;
-    }
-
-    public void setIditempedido(Integer iditempedido) {
-        this.iditempedido = iditempedido;
-    }
-
-    public Integer getIdProducto() {
-        return idproducto;
-    }
-
-    public PedidoRequest(Integer idmozo, Integer idmesa, Integer idproducto, Integer iditempedido) {
+    public PedidoRequest(Integer idmozo, Integer idmesa, List<ItemPedidoDto> items) {
         this.idmozo = idmozo;
         this.idmesa = idmesa;
-        this.idproducto = idproducto;
-        this.iditempedido = iditempedido;
+        this.items = items;
+    }
+
+    public List<ItemPedidoDto> getItems() {
+        return items;
     }
 }

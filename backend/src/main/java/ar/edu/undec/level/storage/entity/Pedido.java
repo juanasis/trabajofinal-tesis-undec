@@ -69,7 +69,6 @@ public class Pedido implements Serializable {
         this.fecha = fecha;
     }
 
-
     public void setitemsList(Collection<ItemPedido> itemsList) {
         this.itemsList = itemsList;
 

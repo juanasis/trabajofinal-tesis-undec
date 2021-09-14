@@ -18,9 +18,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   onLogin(form: LoginI){
-    this.api.loginByEmail(form).subscribe(data =>{
-      console.log(data);
-    });
+   
 
   }
 }
