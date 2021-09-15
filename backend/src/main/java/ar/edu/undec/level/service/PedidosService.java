@@ -1,6 +1,7 @@
 package ar.edu.undec.level.service;
 
 import ar.edu.undec.level.controller.dto.ItemPedidoDto;
+import ar.edu.undec.level.controller.dto.PedidoDto;
 import ar.edu.undec.level.controller.dto.PedidoRequest;
 import ar.edu.undec.level.controller.dto.Response;
 import ar.edu.undec.level.storage.entity.EstadoPedido;
@@ -118,7 +119,8 @@ public class PedidosService {
         Response response = new Response();
         try {
             Pedido pedido = pedidosRepo.findById(Integer.parseInt(id)).get();
-            response.setData(pedido);
+            PedidoDto pedidoDto = new PedidoDto(pedido);
+            response.setData(pedidoDto);
 
         } catch (NoSuchElementException e) {
             LOGGER.error("No existe.");
