@@ -7,6 +7,9 @@ public class ItemPedidoDto {
     private Integer cantidad;
     private BigDecimal precio;
 
+    public ItemPedidoDto() {
+    }
+
     public Integer getProducto_id() {
         return producto_id;
     }

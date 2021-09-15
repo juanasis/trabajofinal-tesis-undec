@@ -62,10 +62,10 @@ public class ItemPedido {
     public Pedido getPedido() {
         return pedido;
     }
-
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
+
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
@@ -73,7 +73,6 @@ public class ItemPedido {
     public Producto getProducto() {
         return producto;
     }
-
     public void setProducto(Producto producto) {
         this.producto = producto;
     }

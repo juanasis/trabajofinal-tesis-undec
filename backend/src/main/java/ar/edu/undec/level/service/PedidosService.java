@@ -6,6 +6,7 @@ import ar.edu.undec.level.controller.dto.Response;
 import ar.edu.undec.level.storage.entity.EstadoPedido;
 import ar.edu.undec.level.storage.entity.ItemPedido;
 import ar.edu.undec.level.storage.entity.Pedido;
+import ar.edu.undec.level.storage.repository.ItemPedidoRepository;
 import ar.edu.undec.level.storage.repository.PedidosRepository;
 import ar.edu.undec.level.storage.repository.ProductosRepository;
 import org.slf4j.Logger;
@@ -23,6 +24,8 @@ public class PedidosService {
     @Autowired
     private PedidosRepository pedidosRepo;
     @Autowired
+    private ItemPedidoRepository itemPedidoRepo;
+    @Autowired
     private ProductosRepository productosRepo;
     static final Logger LOGGER = LoggerFactory.getLogger(PedidosService.class);
 
@@ -34,10 +37,11 @@ public class PedidosService {
         entity.setIdMesa(request.getIdMesa());
         entity.setEstado(EstadoPedido.ENCOLA);
         entity.setFecha(nuevaFecha());
-        entity.setitemsList(getListaItems(request, entity));
+
 
         try {
            entity = pedidosRepo.save(entity);
+           entity.setitemsList(getListaItems(request, entity));
            response.setData(entity);
 
        } catch (Exception e) {
@@ -56,23 +60,10 @@ public class PedidosService {
             item.setPedido(entity);
             item.setProducto(productosRepo.getOne(itemPedidoDto.getProducto_id()));
             result.add(item);
+            itemPedidoRepo.save(item);
         }
         return result;
     }
-   /*  public Response save(Pedido pedido) {
-       Response response = new Response();
-       try {
-           pedido = pedidosRepo.save(pedido);
-           response.setData(pedido);
-
-       } catch (Exception e) {
-           LOGGER.error(e.getMessage());
-           e.printStackTrace();
-           throw e;
-       }
-       return response;
-   }*/
-
     public Response findAll() {
         Response  response = new Response();
         try {
