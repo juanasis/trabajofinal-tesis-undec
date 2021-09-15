@@ -15,6 +15,7 @@ public class PedidoDto {
     private Date fecha;
     private List<ItemProductoDto> itemProductoDtoList = new ArrayList<>();
     private Integer idMesa;
+    private Integer idMozo;
 
 
     public PedidoDto() {
@@ -25,6 +26,7 @@ public class PedidoDto {
         this.fecha = pedido.getFecha();
         this.idMesa = pedido.getIdMesa();
         this.itemProductoDtoList = getProdutos(pedido.getItemsList());
+        this.idMozo = pedido.getIdMozo();
     }
 
     private List<ItemProductoDto> getProdutos(Collection<ItemPedido> itemsList) {
@@ -63,5 +65,21 @@ public class PedidoDto {
 
     public void setItemProductoDtoList(List<ItemProductoDto> itemProductoDtoList) {
         this.itemProductoDtoList = itemProductoDtoList;
+    }
+
+    public Integer getIdMesa() {
+        return idMesa;
+    }
+
+    public void setIdMesa(Integer idMesa) {
+        this.idMesa = idMesa;
+    }
+
+    public Integer getIdMozo() {
+        return idMozo;
+    }
+
+    public void setIdMozo(Integer idMozo) {
+        this.idMozo = idMozo;
     }
 }

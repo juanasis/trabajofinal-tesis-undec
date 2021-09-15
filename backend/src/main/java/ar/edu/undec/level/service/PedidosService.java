@@ -69,7 +69,12 @@ public class PedidosService {
         Response  response = new Response();
         try {
             List<Pedido> pedidosList = pedidosRepo.findAll();
-            response.setData(pedidosList);
+            List<PedidoDto> pedidosDto = new ArrayList<>();
+            for (Pedido pedidoEntity: pedidosList                ) {
+                 PedidoDto pedidoDto  = new PedidoDto(pedidoEntity);
+                 pedidosDto.add(pedidoDto);
+            }
+            response.setData(pedidosDto);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
             e.printStackTrace();
@@ -77,6 +82,24 @@ public class PedidosService {
         }
         return response;
     }
+   public Response findOneById(String id) {
+        Response response = new Response();
+        try {
+            Pedido pedido = pedidosRepo.findById(Integer.parseInt(id)).get();
+            PedidoDto pedidoDto = new PedidoDto(pedido);
+            response.setData(pedidoDto);
+
+        } catch (NoSuchElementException e) {
+            LOGGER.error("No existe.");
+            throw e;
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
+        return response;
+    }
+
     //Formatear fecha
     private Date nuevaFecha(){
         System.out.println(new Date());
@@ -115,21 +138,5 @@ public class PedidosService {
         return response;
 
     }
-    public Response findOneById(String id) {
-        Response response = new Response();
-        try {
-            Pedido pedido = pedidosRepo.findById(Integer.parseInt(id)).get();
-            PedidoDto pedidoDto = new PedidoDto(pedido);
-            response.setData(pedidoDto);
 
-        } catch (NoSuchElementException e) {
-            LOGGER.error("No existe.");
-            throw e;
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage());
-            e.printStackTrace();
-            throw e;
-        }
-        return response;
-    }
 }
