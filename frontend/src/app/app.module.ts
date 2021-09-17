@@ -13,7 +13,8 @@ import { MozosComponent } from "./pages/mozos/mozos.component";
 import { PagesModule } from "./pages/pages.module";
 import { PedidosComponent } from "./pages/pedidos/pedidos.component";
 import { ProductosComponent } from "./pages/productos/productos.component";
- 
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -31,8 +32,10 @@ import { ProductosComponent } from "./pages/productos/productos.component";
   imports: [
     BrowserModule,
     AppRoutingModule,  
-    PagesModule,    
+    PagesModule,
+    ToastrModule.forRoot(),
     FormsModule,    
+    BrowserAnimationsModule,
     HttpClientModule,ReactiveFormsModule
   ],
   providers: [],
