@@ -33,15 +33,12 @@ export class LoginComponent implements OnInit {
     }
   }
   
-  onLogOut(): void {
-    this.tokenService.logOut();
-    window.location.reload();
-  }
   onLogin(): void {
     this.loginUsuario = new LoginUsuario(this.nombreUsuario, this.password);
     this.authService.login(this.loginUsuario).subscribe(
       data => {
         this.isLogged = true;
+        console.log("adentro login");
 
         this.tokenService.setToken(data.token);
         this.tokenService.setUserName(data.nombreUsuario);

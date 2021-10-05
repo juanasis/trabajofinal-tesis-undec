@@ -15,6 +15,7 @@ import { PedidosComponent } from "./pages/pedidos/pedidos.component";
 import { ProductosComponent } from "./pages/productos/productos.component";
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { interceptorProvider } from "src/environments/universal-appInterceptor";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     HttpClientModule,ReactiveFormsModule
   ],
-  providers: [],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

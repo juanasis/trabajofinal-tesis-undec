@@ -38,13 +38,12 @@ public class ProductoController {
         Response response = productosService.update(input);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }*/
-    @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/agregar")
+     @PostMapping("/agregar")
     public ResponseEntity<Response> save(@Valid @RequestBody ProductoRequest request  ){
         Response response = productosService.save(request);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @PreAuthorize("hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Response> delete(@PathVariable(value = "id") Integer productoId) {
         Response response = productosService.delete(productoId);
