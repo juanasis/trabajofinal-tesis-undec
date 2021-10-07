@@ -12,9 +12,11 @@
             <hr>
             <p>Cantidad|  Descripcion del producto|Precio</p>
            <hr>
-           
-           <p *ngIf="pedidovista.productos != null">{{pedidovista.cantidad}} {{pedidovista.producto.nombre}}-------------------- ${{pedidovista.producto.precio}} </p>
-          
+           <ul>
+            <li *ngFor="let pedido of pedidovista.productos">
+              <div>{{pedido.producto.cantidad}}--{{pedido.producto.nombre}}---{{pedido.producto.precio}}</div>
+            </li>
+          </ul>
           
            <button (click)="guardarpedido()" class="btn btn-success btn-lg btn-block">Confirmar</button>
           </div >

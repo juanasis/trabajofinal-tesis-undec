@@ -21,7 +21,7 @@ export class PedidosComponent implements OnInit {
           
         "idmesa":this.selectedPedido.idmesa,
         "idmozo":this.selectedPedido.idmozo,
-        "idproducto": this.selectedPedido.idproducto,
+        //"idproducto": this.selectedPedido.idproducto;
          
       }).subscribe(
         data  => {
