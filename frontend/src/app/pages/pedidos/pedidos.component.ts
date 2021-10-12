@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ItemPedido } from 'src/app/models/itempedido';
 import { Pedido } from 'src/app/models/pedido';
+import { PedidoDTO } from 'src/app/models/pedidoDTO';
 
 @Component({
   selector: 'app-pedidos',
@@ -11,6 +12,7 @@ import { Pedido } from 'src/app/models/pedido';
 export class PedidosComponent implements OnInit {
 
   pedidosArray: Pedido[];
+  pedidosDTO: PedidoDTO[];
   oldpedido: Pedido = new Pedido();
   selectedPedido: Pedido = new Pedido();
 
@@ -41,19 +43,21 @@ export class PedidosComponent implements OnInit {
     this.http.get("http://localhost:8080/pedidos",{responseType: 'json'}).subscribe(
       (resp:any) =>{
       this.pedidosArray = resp.data;
-       
+      this.pedidosDTO = resp.data;
+      console.log(this.pedidosDTO);
        
         })
 }
  
  
-  total(pedido:Pedido):number{
+  total(pedido:PedidoDTO):number{
     let result:number;
      
     result = 0;
     
-    pedido.items.forEach(item => {
-      console.log(item.producto_id);
+     
+    pedido.itemProductoDtoList.forEach(item => {
+       
       result += (item.precio * item.cantidad);
     });
     return result;

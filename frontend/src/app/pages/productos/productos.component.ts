@@ -32,7 +32,7 @@ export class ProductosComponent implements OnInit {
     this.http.get("http://localhost:8080/productos",{responseType: 'json'}).subscribe(
       (resp:any) =>{
       this.productosArray = resp.data;
-       console.log(this.productosArray); })
+     })
 
   }
   nuevoProducto(){
