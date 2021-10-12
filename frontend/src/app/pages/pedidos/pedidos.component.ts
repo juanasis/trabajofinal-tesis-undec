@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ItemPedido } from 'src/app/models/itempedido';
 import { Pedido } from 'src/app/models/pedido';
 
 @Component({
@@ -13,29 +14,6 @@ export class PedidosComponent implements OnInit {
   oldpedido: Pedido = new Pedido();
   selectedPedido: Pedido = new Pedido();
 
-  addOnEdit(){
-    
-      console.log(this.selectedPedido.id);
-      this.pedidosArray.push(this.selectedPedido);
-      this.http.post("http://localhost:8080/pedidos/agregar", {
-          
-        "idmesa":this.selectedPedido.idmesa,
-        "idmozo":this.selectedPedido.idmozo,
-        //"idproducto": this.selectedPedido.idproducto;
-         
-      }).subscribe(
-        data  => {
-        console.log("POST Request is successful ", data);
-        },
-        error  => {
-        
-        console.log("Error", error);
-        
-        }
-        
-        );
-    
-  }
   openForEdit(pedido: Pedido){
     this.selectedPedido = pedido;
   }
@@ -63,9 +41,22 @@ export class PedidosComponent implements OnInit {
     this.http.get("http://localhost:8080/pedidos",{responseType: 'json'}).subscribe(
       (resp:any) =>{
       this.pedidosArray = resp.data;
-      console.log("Funciona la APi REst");
-      console.log(this.pedidosArray); })
+       
+       
+        })
 }
  
+ 
+  total(pedido:Pedido):number{
+    let result:number;
+     
+    result = 0;
+    
+    pedido.items.forEach(item => {
+      console.log(item.producto_id);
+      result += (item.precio * item.cantidad);
+    });
+    return result;
+  }
 
 }

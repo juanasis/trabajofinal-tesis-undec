@@ -48,18 +48,14 @@ export class ClientesComponent implements OnInit {
     }
     
   }
-  /*ngOnInit(): void {
-    this.productos = new Array(1);
-    this.productos[0] = new Producto();
-    this.productos[0].nombre = "Cerveza Negra";
-    this.productos[0].precio = 300;
-    this.productos[0].imgpath= "../../../assets/productos/budweiser.jpg"
-    */
+  
     ngOnInit(): void {
     this.http.get("http://localhost:8080/productos",{responseType: 'json'}).subscribe(
       (resp:any) =>{
       this.productos = resp.data;
-       console.log(this.productos); })
+      console.log(this.productos);
+      
+     })
 
   }
 

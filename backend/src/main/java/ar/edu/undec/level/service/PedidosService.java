@@ -59,7 +59,10 @@ public class PedidosService {
         for (ItemPedidoDto itemPedidoDto: pedidoRequest.getItems()) {
             ItemPedido item = new ItemPedido(itemPedidoDto);
             item.setPedido(entity);
+            System.out.println(itemPedidoDto.getProducto_id());
             item.setProducto(productosRepo.getOne(itemPedidoDto.getProducto_id()));
+            item.setCantidad(itemPedidoDto.getCantidad());
+            item.setPrecio(itemPedidoDto.getPrecio());
             result.add(item);
             itemPedidoRepo.save(item);
         }

@@ -5,7 +5,7 @@
          
         <th scope="col">Mesa</th>
         <th scope="col">Estado</th>
-        <th scope="col">Tiempo Demora</th>
+        <th scope="col">Fecha y Hora</th>
         <th scope="col">Total a Pagar</th>
       </tr>
     </thead>
@@ -14,8 +14,10 @@
         <th scope="row">{{pedido.idMesa}} </th>
         <th scope="row">{{pedido.estado}} </th>
         <th scope="row">{{pedido.fecha}} </th>
-        <th scope="row">{{pedido.precio}}</th>
-      </tr>
+        <!--<th scope="row">${{total(pedido)}}</th>
+        -->
+        <th scope="row">$ error el la funcion total</th>
+        </tr>
        
     </tbody>
   </table>
