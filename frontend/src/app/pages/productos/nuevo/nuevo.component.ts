@@ -9,35 +9,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./nuevo.component.css']
 })
 export class NuevoComponent implements OnInit {
-  productosArray: Producto[];
-  oldProducto: Producto = new Producto();
-  selectedProducto: Producto = new Producto();
+   selectedProducto: Producto = new Producto();
 
   
   constructor(private http: HttpClient, private router: Router) { }
-  addOnEdit(){
-    
+  addOnEdit(){    
     console.log(this.selectedProducto.id);
-    this.productosArray.push(this.selectedProducto);
-    this.http.post("http://localhost:8080/Productos/agregar", {
-        
-      "idmesa":this.selectedProducto.nombre,
-      
-       
-    }).subscribe(
+    this.http.post("http://localhost:8080/pedidos/agregar", this.selectedProducto).subscribe(
       data  => {
       console.log("POST Request is successful ", data);
       },
       error  => {
-      
-      console.log("Error", error);
-      
-      }
-      
-      );
-  
-}
-salir(){
+    console.log("Error", error);
+    }
+    )
+  }
+
+
+
+  salir(){
    this.router.navigate(['administrador']);
 
 }
