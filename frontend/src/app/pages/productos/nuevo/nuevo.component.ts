@@ -15,6 +15,7 @@ export class NuevoComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
   addOnEdit(){    
     console.log(this.selectedProducto.id);
+    this.selectedProducto.cantidad = 1;
     this.http.post("http://localhost:8080/productos/agregar", this.selectedProducto).subscribe(
       data  => {
       console.log("POST Request is successful ", data);

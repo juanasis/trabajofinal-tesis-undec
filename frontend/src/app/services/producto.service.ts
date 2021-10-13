@@ -21,7 +21,7 @@ export class ProductoService {
   }
 
   public detailName(nombre: string): Observable<Producto> {
-    return this.httpClient.get<Producto>(this.productoURL + `/${nombre}`);
+    return this.httpClient.get<Producto>(this.productoURL + `nombre/${nombre}`);
   }
 
   public save(producto: Producto): Observable<any> {
