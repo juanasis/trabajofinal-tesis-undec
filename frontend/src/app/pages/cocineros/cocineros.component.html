@@ -3,63 +3,31 @@
 
       <div class="row">
         <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-           Pedido Nro 1
-           <p> Mesa Nro 2  </p> 
-           <p> Mozo Fede </p>
-         
-            <div class="card-body">
-              <p class="card-text">pizza mozzarella  ------ 1</p>
+          <tr *ngFor="let pedido of pedidos" >
+           <div class="card mb-4 box-shadow">
+            <p> Mozo Fede </p>
+            <th scope="row">Mesa Nro {{pedido.idMesa}} </th>
+            <div class="card-body">            
+           
+            <tr *ngFor="let item of pedido.itemProductoDtoList" >
+            <th scope="row">*  {{item.cantidad}} - {{item.nombre}}   </th>
+
+            </tr>
+            <hr>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">En Preparacion</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Listo</button>
+                  <button type="button" class="btn btn-sm btn-primary">Listo</button>
                 </div>
                 <small class="text-muted">18 mins</small>
               </div>
             </div>
           </div>
+        </tr>
         </div>       
       </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-           Pedido Nro 13
-           <p> Mesa Nro 21  </p> 
-           <p> Mozo Fede </p>
-            <div class="card-body">
-              <p class="card-text">Lomo de Carne --------- 2</p>
-              <p class="card-text">Pizza --------- 2</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">En Preparacion</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Listo</button>
-                </div>
-                <small class="text-muted">11 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>       
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-           Pedido Nro 21
-           <p> Mesa Nro 24  </p> 
-           <p> Mozo German </p>
-            <div class="card-body">
-              <p class="card-text">Lasagna ---- 3</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">En Preparacion</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Listo</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>       
-      </div>
+       
+   
       
     </div>
   </div>
