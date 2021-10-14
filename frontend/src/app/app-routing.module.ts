@@ -8,6 +8,7 @@ import { MozosComponent } from './pages/mozos/mozos.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NuevoComponent } from './pages/productos/nuevo/nuevo.component';
 import { EditarComponent } from './pages/productos/editar/editar.component';
+import { EditarPedidoComponent } from './pages/pedidos/editarpedido/editarpedido.component';
  
 const routes: Routes = [  {
   path: 'cajeros',
@@ -39,6 +40,10 @@ const routes: Routes = [  {
 {
   path: 'editar/:id',
   component: EditarComponent
+},
+{
+  path: 'editarpedido/:id',
+  component: EditarPedidoComponent
 },
 {
   path: '**',

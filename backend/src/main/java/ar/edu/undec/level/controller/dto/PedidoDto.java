@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 public class PedidoDto {
+    private Integer id;
     private EstadoPedido estado;
     private Date fecha;
     private List<ItemProductoDto> itemProductoDtoList = new ArrayList<>();
@@ -22,6 +23,7 @@ public class PedidoDto {
     }
 
     public PedidoDto(Pedido pedido) {
+        this.id = pedido.getId();
         this.estado = pedido.getEstado();
         this.fecha = pedido.getFecha();
         this.idMesa = pedido.getIdMesa();
@@ -42,6 +44,9 @@ public class PedidoDto {
         return result;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
     public EstadoPedido getEstado() {
         return estado;
