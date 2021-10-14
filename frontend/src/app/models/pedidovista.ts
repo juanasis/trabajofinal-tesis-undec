@@ -12,7 +12,7 @@ export class Pedidovista {
     agregar(producto: Producto) {
         let productoVista = new ProductoVista(producto, 1);
         //let indice = this.productos.indexOf(productoVista)
-        let indice = this.productos.findIndex( s => s.producto.nombre == productoVista.producto.nombre )
+        let indice = this.productos.findIndex( s => s.producto.nombre === productoVista.producto.nombre )
         
        
         if(indice === -1){
@@ -20,6 +20,7 @@ export class Pedidovista {
           }else{
               
               this.productos[indice].producto.cantidad ++;
+              
                
           }
         

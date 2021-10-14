@@ -14,11 +14,11 @@ export class Pedido {
     }
     agregar(producto : Producto){
       let item = new ItemPedido(producto.id, 1,producto.precio);
-      let indice = this.items.indexOf(item)
-      
+      let indice = this.items.findIndex( s => s.producto_id === item.producto_id )
         if(indice === -1){
             this.items.push(item);          
         }else{
+              
             this.items[indice].cantidad += 1; 
         }
         
