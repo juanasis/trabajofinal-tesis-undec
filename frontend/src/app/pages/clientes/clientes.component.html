@@ -14,7 +14,8 @@
            <hr>
            <ul>
             <li *ngFor="let pedido of pedidovista.productos">
-              <div>{{pedido.producto.cantidad}}--{{pedido.producto.nombre}}---{{pedido.producto.precio}}</div>
+              <div><button id="btn1">-</button> {{pedido.producto.cantidad}} <button (click)="agregarProducto(pedido.producto)" id="btn2">+</button>
+              {{pedido.producto.nombre}} ${{pedido.producto.precio}} </div>
             </li>
           </ul>
           <div>
