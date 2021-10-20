@@ -30,6 +30,10 @@ export class ClientesComponent implements OnInit {
     this.total = this.pedidovista.agregar(producto);
     
   }
+  quitarProducto(producto: Producto){
+    this.pedido.quitar(producto);
+    this.total = this.pedidovista.quitar(producto);
+  }
   guardarpedido(){
     if(this.pedidovista.productos.length === 0){
       alert("seleccione uno o mas productos");

@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="clientes.component.css">
 </head>
 <div class="conteiner mt-3">
-     Nuevo Pedido
+     <h3>Nuevo Pedido</h3>
      <hr>
         <div class="grid">
           <div class="listado">Tu Pedido
@@ -14,7 +14,7 @@
            <hr>
            <ul>
             <li *ngFor="let pedido of pedidovista.productos">
-              <div><button id="btn1">-</button> {{pedido.producto.cantidad}} <button (click)="agregarProducto(pedido.producto)" id="btn2">+</button>
+              <div><button (click)="quitarProducto(pedido.producto)" id="btn1">-</button> {{pedido.producto.cantidad}} <button (click)="agregarProducto(pedido.producto)" id="btn2">+</button>
               {{pedido.producto.nombre}} ${{pedido.producto.precio}} </div>
             </li>
           </ul>

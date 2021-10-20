@@ -23,5 +23,10 @@ export class Pedido {
         }
         
     }
+    quitar(producto: Producto) {
+        let indice = this.items.findIndex( s => s.producto_id === producto.id );
+        this.items[indice].cantidad -= 1; 
+
+      }
 }
 

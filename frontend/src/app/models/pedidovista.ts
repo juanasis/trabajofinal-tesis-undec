@@ -29,4 +29,14 @@ export class Pedidovista {
           }
         return this.total;
     }
+    quitar(producto: Producto):number {
+      
+        let indice = this.productos.findIndex( s => s.producto.nombre === producto.nombre );
+              
+        this.productos[indice].producto.cantidad --;
+        this.total -= (this.productos[indice].producto.precio);
+             
+          
+        return this.total;
+    }
 }
