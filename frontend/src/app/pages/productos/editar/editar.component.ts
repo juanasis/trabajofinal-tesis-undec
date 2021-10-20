@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+ 
 import { ProductoI } from '../../../models/producto.interface';
-import { ApiService } from '../../../services/api.service';
+ 
 import { FormGroup, FormControl, Validator } from '@angular/forms';
-
+import { ToastrService } from 'ngx-toastr';
+import { ProductoService } from 'src/app/services/producto.service';
+import { Producto } from 'src/app/models/producto';
 
 @Component({
   selector: 'app-editar',
@@ -12,16 +14,45 @@ import { FormGroup, FormControl, Validator } from '@angular/forms';
   styleUrls: ['./editar.component.css']
 })
 export class EditarComponent implements OnInit {
+  producto: Producto = null;
+  constructor(private productoService: ProductoService,
+    private activatedRoute: ActivatedRoute,
+    private toastr: ToastrService,
+    private router: Router ) { }
 
-  constructor(private activaterouter:ActivatedRoute, private router: Router, private api:ApiService) { }
+   
+  
+  ngOnInit() {
+    const id = this.activatedRoute.snapshot.params.id;
+    this.productoService.detail(id).subscribe(
+      data => {
+        this.producto = data;
+      },
+      err => {
+        this.toastr.error(err.error.mensaje, 'Fail', {
+          timeOut: 3000,  positionClass: 'toast-top-center',
+        });
+        this.router.navigate(['/']);
+      }
+    );
+  }
 
-  datosProducto: ProductoI;
-  editarFor = new FormGroup({
-     nombre: new FormControl('')
-  })
-
-  ngOnInit(): void {
-    
+  onUpdate(): void {
+    const id = this.activatedRoute.snapshot.params.id;
+    this.productoService.update(id, this.producto).subscribe(
+      data => {
+        this.toastr.success('Producto Actualizado', 'OK', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
+        this.router.navigate(['/administrador']);
+      },
+      err => {
+        this.toastr.error(err.error.mensaje, 'Fail', {
+          timeOut: 3000,  positionClass: 'toast-top-center',
+        });
+        // this.router.navigate(['/']);
+      }
+    );
   }
   
   salir(){

@@ -29,7 +29,7 @@ export class ProductoService {
   }
 
   public update(id: number, producto: Producto): Observable<any> {
-    return this.httpClient.put<any>(this.productoURL + `update/${id}`, producto);
+    return this.httpClient.put<any>(this.productoURL + `/update/${id}`, producto);
   }
 
   public delete(id: number): Observable<any> {

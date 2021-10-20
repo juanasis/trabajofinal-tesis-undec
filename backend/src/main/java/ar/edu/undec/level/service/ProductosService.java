@@ -10,12 +10,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class ProductosService {
@@ -96,6 +94,17 @@ public class ProductosService {
             throw e;
         }
         return response;
+    }
+
+    public boolean existsById(int id){
+        return productosRepo.existsById(id);
+    }
+    public Producto getByNombre(String nombre){
+        return productosRepo.findByNombre(nombre);
+    }
+
+    public Optional<Producto> getOne(int id){
+        return productosRepo.findById(id);
     }
 
 }
