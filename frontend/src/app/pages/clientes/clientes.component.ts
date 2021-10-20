@@ -13,6 +13,7 @@ export class ClientesComponent implements OnInit {
   productos: Producto[] ;
   pedido: Pedido;
   pedidovista: Pedidovista;
+  total:number = 0.00
   
   constructor(private http: HttpClient) {// private mozo: Mozo, private) {  
     this.pedido = new Pedido();
@@ -26,7 +27,7 @@ export class ClientesComponent implements OnInit {
     /*chequear si el producto ya existe e incrementar uno*/
     //this.pedido.listadeproductos.push(producto.id, 1);
     this.pedido.agregar(producto);
-    this.pedidovista.agregar(producto);
+    this.total = this.pedidovista.agregar(producto);
     
   }
   guardarpedido(){
@@ -34,7 +35,8 @@ export class ClientesComponent implements OnInit {
       alert("seleccione uno o mas productos");
        
     }else if(confirm('Confirme su orden')){
-    this.http.post("http://localhost:8080/pedidos/agregar", this.pedido).subscribe(
+    
+      this.http.post("http://localhost:8080/pedidos/agregar", this.pedido).subscribe(
       data  => {
       console.log("POST Request is successful ", data);
       },

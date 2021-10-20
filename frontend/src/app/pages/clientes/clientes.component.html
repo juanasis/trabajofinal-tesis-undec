@@ -17,7 +17,9 @@
               <div>{{pedido.producto.cantidad}}--{{pedido.producto.nombre}}---{{pedido.producto.precio}}</div>
             </li>
           </ul>
-          
+          <div>
+            Total a pagar: ${{total}}
+          </div>
            <button (click)="guardarpedido()" class="btn btn-success btn-lg btn-block">Confirmar</button>
           </div >
          <ul   class="grid" >
