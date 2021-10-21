@@ -26,7 +26,11 @@ export class Pedido {
     quitar(producto: Producto) {
         let indice = this.items.findIndex( s => s.producto_id === producto.id );
         this.items[indice].cantidad -= 1; 
-
+        
+        if(this.items[indice].cantidad === 0){
+            this.items[indice].cantidad = 1;
+            this.items.splice(indice,1);
+         }
       }
 }
 

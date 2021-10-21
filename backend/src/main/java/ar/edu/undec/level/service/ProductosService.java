@@ -45,21 +45,30 @@ public class ProductosService {
         }
         return response;
     }
-    public Response save(ProductoRequest productos) {
+    public Response save(int id, ProductoRequest productos) {
         Response response = new Response();
         Producto entity = new Producto();
-        entity.setNombre(productos.getNombre());
-        entity.setDescripcion(productos.getDescripcion());
-        entity.setCantidad(productos.getCantidad());
-        entity.setCategoria(productos.getCategoria());
-        entity.setPrecio(productos.getPrecio());
-        entity.setImgpath(productos.getImgpath());
+        if(id >= 0){
+            entity = productosRepo.getOne(id);
+            entity.setNombre(productos.getNombre());
+            entity.setPrecio(productos.getPrecio());
+        }else{
+            entity.setNombre(productos.getNombre());
+            entity.setDescripcion(productos.getDescripcion());
+            entity.setCantidad(productos.getCantidad());
+            entity.setCategoria(productos.getCategoria());
+            entity.setPrecio(productos.getPrecio());
+            entity.setImgpath(productos.getImgpath());
+        }
+
         productosRepo.save(entity);
         response.setData("guardado");
         return response;
     }
 
-
+    public Response save(ProductoRequest productos) {
+        return save(-1,productos);
+    }
     private Date nuevaFecha(){
         System.out.println(new Date());
         return new Date();
@@ -106,5 +115,6 @@ public class ProductosService {
     public Optional<Producto> getOne(int id){
         return productosRepo.findById(id);
     }
+
 
 }

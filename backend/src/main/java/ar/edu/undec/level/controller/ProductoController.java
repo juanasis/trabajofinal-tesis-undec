@@ -36,14 +36,9 @@ public class ProductoController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id")int id, @RequestBody ProductoRequest productoDto){
-
-        Producto producto = productosService.getOne(id).get();
-        producto.setNombre(productoDto.getNombre());
-        producto.setPrecio(productoDto.getPrecio());
-        ProductoRequest productoRequest = new ProductoRequest();
-        productosService.save(productoRequest.getProductoDTO(producto));
-        return new ResponseEntity(new Mensaje("producto actualizado"), HttpStatus.OK);
+    public ResponseEntity<?> update(@PathVariable("id")int id, @RequestBody ProductoRequest request){
+        Response response = productosService.save(id,request);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
      @PostMapping("/agregar")
     public ResponseEntity<Response> save(@Valid @RequestBody ProductoRequest request  ){

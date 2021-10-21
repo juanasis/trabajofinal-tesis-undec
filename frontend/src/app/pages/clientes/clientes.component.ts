@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pedido } from 'src/app/models/pedido';
 import { Pedidovista } from 'src/app/models/pedidovista';
 import { Producto } from 'src/app/models/producto';
@@ -15,7 +16,7 @@ export class ClientesComponent implements OnInit {
   pedidovista: Pedidovista;
   total:number = 0.00
   
-  constructor(private http: HttpClient) {// private mozo: Mozo, private) {  
+  constructor(private http: HttpClient, private router: Router ) {// private mozo: Mozo, private) {  
     this.pedido = new Pedido();
     this.pedidovista = new Pedidovista();
     this.pedido.idmozo= 1;
@@ -43,14 +44,21 @@ export class ClientesComponent implements OnInit {
       this.http.post("http://localhost:8080/pedidos/agregar", this.pedido).subscribe(
       data  => {
       console.log("POST Request is successful ", data);
+      alert("Pedido Realizado con Éxito");
+      this.pedido = new Pedido();
+      this.pedidovista = new Pedidovista();
+      this.pedido.idmozo= 1;
+      this.pedido.idmesa = 1;
+      this.total = 0;
       },
       error  => {
       
       console.log("Error", error);
       
       }
-      
+     
     )
+    
     }
     
   }

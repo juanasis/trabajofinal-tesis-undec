@@ -36,7 +36,10 @@ export class Pedidovista {
         this.productos[indice].producto.cantidad --;
         this.total -= (this.productos[indice].producto.precio);
              
-          
+        if(this.productos[indice].producto.cantidad === 0){
+            this.productos[indice].producto.cantidad = 1;
+            this.productos.splice(indice,1);
+         }
         return this.total;
     }
 }
