@@ -22,7 +22,7 @@ export class CocinerosComponent implements OnInit {
     EditEstado(id:number, estado: String){
       console.log(id);
       console.log(estado);
-      this.pedidos[id].estado = estado;
+      //setear el estado con un update en el backend 
 
     }
 
