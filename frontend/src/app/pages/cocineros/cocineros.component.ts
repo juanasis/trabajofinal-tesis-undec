@@ -15,14 +15,20 @@ export class CocinerosComponent implements OnInit {
    
     constructor(private http: HttpClient) { }
     ngOnInit(): void {
-      this.http.get("http://localhost:8080/pedidos",{responseType: 'json'}).subscribe(
+      this.http.get("http://localhost:8080/pedidos/cocina",{responseType: 'json'}).subscribe(
         (resp:any) =>{
        
         this.pedidos = resp.data;
-        console.log(this.pedidos);
-         
-         
-          })
-  }
+        console.log( resp.data);
+        })
+    }
+    esMenu(categoria: String): boolean{
+      console.log(categoria);
+      if(categoria === 'menu'){
+        return true;
+      }else return false;
+      
+
+    }
 
 }

@@ -21,14 +21,14 @@ export class PedidoService {
   }
 
  public save(pedido: Pedido): Observable<any> {
-    return this.httpClient.post<any>(this.pedidoURL + 'agregar', pedido);
+    return this.httpClient.post<any>(this.pedidoURL + '/agregar', pedido);
   }
 
   public update(id: number, pedido: Pedido): Observable<any> {
-    return this.httpClient.put<any>(this.pedidoURL + `update/${id}`, pedido);
+    return this.httpClient.put<any>(this.pedidoURL + `/update/${id}`, pedido);
   }
 
   public delete(id: number): Observable<any> {
-    return this.httpClient.delete<any>(this.pedidoURL + `delete/${id}`);
+    return this.httpClient.delete<any>(this.pedidoURL + `/delete/${id}`);
   }
 }

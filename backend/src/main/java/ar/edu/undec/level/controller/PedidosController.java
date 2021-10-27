@@ -31,6 +31,13 @@ public class PedidosController {
         response = pedidosService.findAll();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+    @GetMapping("/cocina")
+    public ResponseEntity<Response> getPedidosCocina(){
+        Response response;
+        response = pedidosService.findAllPedidosCocina();
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
     @GetMapping("/{id}")
     public ResponseEntity<Response> get(@PathVariable String id) {
         Response response = pedidosService.findOneById(id);

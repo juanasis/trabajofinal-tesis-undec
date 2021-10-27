@@ -1,9 +1,6 @@
 package ar.edu.undec.level.service;
 
-import ar.edu.undec.level.controller.dto.ItemPedidoDto;
-import ar.edu.undec.level.controller.dto.PedidoDto;
-import ar.edu.undec.level.controller.dto.PedidoRequest;
-import ar.edu.undec.level.controller.dto.Response;
+import ar.edu.undec.level.controller.dto.*;
 import ar.edu.undec.level.storage.entity.EstadoPedido;
 import ar.edu.undec.level.storage.entity.ItemPedido;
 import ar.edu.undec.level.storage.entity.Pedido;
@@ -141,5 +138,31 @@ public class PedidosService {
         return response;
 
     }
+
+    public Response findAllPedidosCocina() {//estado, mozo, mesa, hora, producto(cantidad, nombre, categoria)
+
+        Response response = new Response();
+        try {
+            List<Pedido> pedidosList = pedidosRepo.findAll();
+            List<PedidoDtoCocina> pedidosCocina = new ArrayList<>();
+            for (Pedido pedidoEntity: pedidosList                ) {
+                PedidoDtoCocina pedidoDtoCocina  = new PedidoDtoCocina(pedidoEntity);
+                if(pedidoDtoCocina.getId() != null){
+                    pedidosCocina.add(pedidoDtoCocina);
+                }
+
+
+
+            }
+
+            response.setData(pedidosCocina);
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
+        return response;
+    }
+
 
 }

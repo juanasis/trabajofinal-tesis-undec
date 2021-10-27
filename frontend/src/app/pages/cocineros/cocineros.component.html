@@ -4,13 +4,13 @@
       <div class="row">
         <div class="col-md-4">
           <tr *ngFor="let pedido of pedidos" >
-           <div class="card mb-4 box-shadow">
+           <div *ngIf="true" class="card mb-4 box-shadow">
             <p> Mozo Fede </p>
             <th scope="row">Mesa Nro {{pedido.idMesa}} </th>
             <div class="card-body">            
            
-            <tr *ngFor="let item of pedido.itemProductoDtoList" >
-            <th scope="row">*  {{item.cantidad}} - {{item.nombre}}   </th>
+            <tr *ngFor="let item of pedido.itemProductoCocinaDto" >
+            <th  scope="row">*  {{item.cantidad}} - {{item.nombre}}   </th>
 
             </tr>
             <hr>
