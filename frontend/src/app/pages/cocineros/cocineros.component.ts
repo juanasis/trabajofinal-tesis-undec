@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
- 
-import { Pedido } from 'src/app/models/pedido';
 import { HttpClient } from '@angular/common/http';
 import { PedidoDTO } from 'src/app/models/pedidoDTO';
 @Component({
@@ -10,8 +8,6 @@ import { PedidoDTO } from 'src/app/models/pedidoDTO';
 })
 export class CocinerosComponent implements OnInit {
   pedidos: PedidoDTO[] = [];
-  
-
    
     constructor(private http: HttpClient) { }
     ngOnInit(): void {
@@ -22,12 +18,11 @@ export class CocinerosComponent implements OnInit {
         console.log( resp.data);
         })
     }
-    esMenu(categoria: String): boolean{
-      console.log(categoria);
-      if(categoria === 'menu'){
-        return true;
-      }else return false;
-      
+    
+    EditEstado(id:number, estado: String){
+      console.log(id);
+      console.log(estado);
+      this.pedidos[id].estado = estado;
 
     }
 

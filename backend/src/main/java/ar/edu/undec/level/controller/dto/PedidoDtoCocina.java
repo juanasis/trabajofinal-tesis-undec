@@ -44,7 +44,7 @@ public class PedidoDtoCocina {
             itemDto.setCategoria(item.getProducto().getCategoria());
             if(item.getProducto().getCategoria().equalsIgnoreCase( "menu") ){
                 result.add(itemDto);
-                System.out.println(item.getProducto().getCategoria());
+
             }
 
         }
