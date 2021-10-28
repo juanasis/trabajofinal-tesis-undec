@@ -42,7 +42,7 @@ const routes: Routes = [  {
   component: EditarComponent
 },
 {
-  path: 'editarpedido/:id',
+  path: 'editarpedido',
   component: EditarPedidoComponent
 },
 {

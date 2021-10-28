@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ItemPedido } from 'src/app/models/itempedido';
+
 import { Pedido } from 'src/app/models/pedido';
 import { PedidoDTO } from 'src/app/models/pedidoDTO';
+import { PedidoService } from 'src/app/services/pedido.service';
+import { EditarPedidoComponent } from './editarpedido/editarpedido.component';
 
 @Component({
   selector: 'app-pedidos',
@@ -39,7 +41,7 @@ export class PedidosComponent implements OnInit {
     }
 
   }
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router,private pedidoService: PedidoService ) { }
   ngOnInit(): void {
     this.http.get("http://localhost:8080/pedidos",{responseType: 'json'}).subscribe(
       (resp:any) =>{
@@ -63,9 +65,9 @@ export class PedidosComponent implements OnInit {
     });
     return result;
   }
-  editarPedido(id){
-    console.log(id);
-    this.router.navigate(['editarpedido',id]);
+  editarPedido(pedido: PedidoDTO){
+    this.pedidoService.setPedido(pedido);
+    this.router.navigate(['editarpedido']);
 
   }
 

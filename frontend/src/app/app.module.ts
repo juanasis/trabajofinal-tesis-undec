@@ -16,12 +16,14 @@ import { ProductosComponent } from "./pages/productos/productos.component";
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { interceptorProvider } from "src/environments/universal-appInterceptor";
+import { EditarPedidoComponent } from "./pages/pedidos/editarpedido/editarpedido.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     PedidosComponent,
+    EditarPedidoComponent,
     ProductosComponent,
     CajerosComponent,
     MozosComponent,

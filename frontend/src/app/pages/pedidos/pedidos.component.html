@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let pedido of pedidosDTO" (click)="editarPedido(pedido.id)">
+      <tr *ngFor="let pedido of pedidosDTO" (click)="editarPedido(pedido)">
         <th scope="row">{{pedido.idMesa}} </th>
         <th scope="row">{{pedido.estado}} </th>
         <th scope="row">{{pedido.fecha}} </th>
