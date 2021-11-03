@@ -15,7 +15,7 @@ import javax.validation.ConstraintViolationException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-@ControllerAdvice(basePackages = "com.undec.gedufy.controller")
+@ControllerAdvice(basePackages = "ar.edu.undec.level.controller")
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 

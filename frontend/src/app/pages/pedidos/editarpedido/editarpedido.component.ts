@@ -25,6 +25,7 @@ export class EditarPedidoComponent implements OnInit {
     private tokenService: TokenService) { 
     
   }
+  pedido: PedidoDTO;
 
   items: ItemPedidoDTO[] = null;
   roles: string[];
@@ -35,6 +36,7 @@ export class EditarPedidoComponent implements OnInit {
     ngOnInit(): void {
     //this.cargarItems();
     this.items = this.pedidoService.getPedido().itemProductoDtoList;
+    this.pedido = this.pedidoService.getPedido();
     this.roles = this.tokenService.getAuthorities();
     this.roles.forEach(rol => {
       if (rol === 'ROLE_ADMIN') {
@@ -88,5 +90,17 @@ export class EditarPedidoComponent implements OnInit {
 
   total(a:number, b: number){
     return a*b;
+  }
+  totalAPagar():number{
+    let result:number;
+     
+    result = 0;
+    
+     
+    this.pedido.itemProductoDtoList.forEach(item => {
+       
+      result += (item.precio * item.cantidad);
+    });
+    return result;
   }
 }

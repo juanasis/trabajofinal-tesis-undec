@@ -1,16 +1,13 @@
 package ar.edu.undec.level.controller;
 
-import ar.edu.undec.level.controller.dto.Mensaje;
 import ar.edu.undec.level.controller.dto.ProductoRequest;
 import ar.edu.undec.level.controller.dto.Response;
 import ar.edu.undec.level.service.ProductosService;
-import ar.edu.undec.level.storage.entity.Producto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

@@ -291,3 +291,14 @@ html {
     width:60%;
   }
   
+  .image-fondo{
+    background-image: url("src/assets/imagenes/fondo.jpg");
+    position: fixed;
+    height: 50%;
+    min-width: 50%;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    background-size: cover;
+    
+}

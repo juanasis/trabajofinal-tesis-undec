@@ -33,9 +33,14 @@
       </div>
   
       <div class="form-group mt-4">
-        <label for="exampleFormControlFile1">Insertar imagen</label>
-        <p></p>
-        <input type="file" [(ngModel)]="selectedProducto.imgpath" placeholder="Seleccionar una imagen" class="form-control-file"  id="exampleFormControlFile1" >
+        <p>Seleccione una imagen</p>
+      <!--  <label for="exampleFormControlFile1">Insertar imagen</label>-->
+       <!--  <input type="file" [(ngModel)]="selectedProducto.imgpath" placeholder="Seleccionar una imagen" class="form-control-file"  id="exampleFormControlFile1" >
+      -->  
+      <upload-files></upload-files>
+        
+               
+      
       </div>
       <button (click)="addOnEdit()" class="btn btn-primary mt-4">
         Guardar

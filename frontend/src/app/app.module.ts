@@ -17,7 +17,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { interceptorProvider } from "src/environments/universal-appInterceptor";
 import { EditarPedidoComponent } from "./pages/pedidos/editarpedido/editarpedido.component";
-
+import { UploadFilesComponent } from 'src/app/components/upload-files/upload-files.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +30,8 @@ import { EditarPedidoComponent } from "./pages/pedidos/editarpedido/editarpedido
     CocinerosComponent,
     ClientesComponent,
     routingComponents,
-    AdministradorComponent
+    AdministradorComponent,
+    UploadFilesComponent
   ],
   imports: [
     BrowserModule,

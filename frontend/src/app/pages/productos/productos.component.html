@@ -43,7 +43,8 @@
         <th scope="col">Producto</th>
         <th scope="col">Descripcion</th>
         <th scope="col">Categoria</th>
-         <th scope="col">Precio</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Estado</th>
       </tr>
     </thead>
     <tbody>
@@ -52,7 +53,10 @@
         <td>{{producto.nombre}} </td>
         <td>{{producto.descripcion}} </td>
         <td>{{producto.categoria}} </td>
-         <td>$ {{producto.precio}} </td>
+        <td>$ {{producto.precio}} </td>
+        <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
+          <button type="button" class="btn btn-success">Activo</button>
+        </div></td>
       </tr>
        
     </tbody>

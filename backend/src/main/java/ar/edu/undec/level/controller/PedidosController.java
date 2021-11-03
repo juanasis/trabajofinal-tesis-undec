@@ -43,6 +43,11 @@ public class PedidosController {
         Response response = pedidosService.findOneById(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+    @GetMapping("/nro/{id}")
+    public ResponseEntity<Response> getParaLaCaja(@PathVariable String id) {
+        Response response = pedidosService.buscarPorId(id);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
     @PutMapping
     public ResponseEntity<Response> put(@RequestBody Object input) {
         Response response = pedidosService.update(input);

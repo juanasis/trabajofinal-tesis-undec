@@ -12,10 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.math.BigDecimal;
+import java.util.*;
 
 @Service
 public class PedidosService {
@@ -165,4 +163,35 @@ public class PedidosService {
     }
 
 
+    public Response buscarPorId(String id) {
+        Response response = new Response();
+        try {
+            Pedido pedido = pedidosRepo.findById(Integer.parseInt(id)).get();
+
+            List<ItemProductoDto> items ;
+            items = getListaItemsProductoDto(pedido.getItemsList());
+            response.setData(items);
+
+        } catch (NoSuchElementException e) {
+            LOGGER.error("No existe.");
+            throw e;
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
+        return response;
+    }
+
+    private List<ItemProductoDto> getListaItemsProductoDto(Collection<ItemPedido> itemsList) {
+        List<ItemProductoDto> itemProductoDtoList = new ArrayList<ItemProductoDto>();
+        for (ItemPedido item: itemsList             ) {
+            ItemProductoDto itemDTO = new ItemProductoDto();
+            itemDTO.setNombre(item.getProducto().getNombre());
+            itemDTO.setPrecio(BigDecimal.valueOf(item.getProducto().getPrecio()));
+            itemDTO.setCantidad(item.getCantidad());
+            itemProductoDtoList.add(itemDTO);
+        }
+        return itemProductoDtoList;
+    }
 }
