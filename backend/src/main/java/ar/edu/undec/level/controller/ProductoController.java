@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -37,12 +38,13 @@ public class ProductoController {
         Response response = productosService.save(id,request);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-     @PostMapping("/agregar")
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/agregar")
     public ResponseEntity<Response> save(@Valid @RequestBody ProductoRequest request  ){
         Response response = productosService.save(request);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("delete/{id}")
     public ResponseEntity<Response> delete(@PathVariable(value = "id") Integer productoId) {
         Response response = productosService.delete(productoId);

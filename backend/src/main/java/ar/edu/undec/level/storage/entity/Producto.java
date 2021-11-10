@@ -16,7 +16,22 @@ public class Producto implements Serializable {
    private  String categoria;
    private  String imgpath;
    private Double precio;
+   private EstadoProducto estado;
    private Collection<ItemPedido> pedidosList;
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", cantidad=" + cantidad +
+                ", categoria='" + categoria + '\'' +
+                ", imgpath='" + imgpath + '\'' +
+                ", precio=" + precio +
+                ", estado=" + estado +
+                '}';
+    }
 
     @Id
     @Column(name = "id")
@@ -76,6 +91,13 @@ public class Producto implements Serializable {
         this.imgpath = imgpath;
     }
 
+    public EstadoProducto getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoProducto estado) {
+        this.estado = estado;
+    }
 
     @OneToMany(mappedBy = "producto")
     public Collection<ItemPedido> getPedidosList() {

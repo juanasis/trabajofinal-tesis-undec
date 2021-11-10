@@ -3,6 +3,7 @@ package ar.edu.undec.level.service;
 import ar.edu.undec.level.controller.dto.ProductoRequest;
 import ar.edu.undec.level.controller.dto.Response;
 
+import ar.edu.undec.level.storage.entity.EstadoProducto;
 import ar.edu.undec.level.storage.entity.Producto;
 import ar.edu.undec.level.storage.repository.ProductosRepository;
 import org.slf4j.Logger;
@@ -45,22 +46,36 @@ public class ProductosService {
         }
         return response;
     }
-    public Response save(int id, ProductoRequest productos) {
+    public Response save(int id, ProductoRequest productoRequest) {
         Response response = new Response();
         Producto entity = new Producto();
         if(id >= 0){
             entity = productosRepo.getOne(id);
-            entity.setNombre(productos.getNombre());
-            entity.setPrecio(productos.getPrecio());
+            entity.setNombre(productoRequest.getNombre());
+            entity.setPrecio(productoRequest.getPrecio());
+            entity.setEstado(productoRequest.getEstado());
         }else{
-            entity.setNombre(productos.getNombre());
-            entity.setDescripcion(productos.getDescripcion());
-            entity.setCantidad(productos.getCantidad());
-            entity.setCategoria(productos.getCategoria());
-            entity.setPrecio(productos.getPrecio());
-            entity.setImgpath(productos.getImgpath());
+            entity.setNombre(productoRequest.getNombre());
+            entity.setDescripcion(productoRequest.getDescripcion());
+            entity.setCantidad(productoRequest.getCantidad());
+            entity.setCategoria(productoRequest.getCategoria());
+            entity.setPrecio(productoRequest.getPrecio());
+            entity.setImgpath(productoRequest.getImgpath());
+            entity.setEstado(EstadoProducto.DISPONIBLE);
         }
 
+        productosRepo.save(entity);
+        response.setData("guardado");
+        return response;
+    }
+    public Response cambiarEstado(int id, EstadoProducto nuevoEstado) {
+        Response response = new Response();
+        Producto entity = new Producto();
+        if (id >= 0) {
+            entity = productosRepo.getOne(id);
+            entity.setEstado(nuevoEstado);
+
+        }
         productosRepo.save(entity);
         response.setData("guardado");
         return response;

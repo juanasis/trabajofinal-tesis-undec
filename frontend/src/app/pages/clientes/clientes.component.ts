@@ -19,8 +19,8 @@ export class ClientesComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router ) {// private mozo: Mozo, private) {  
     this.pedido = new Pedido();
     this.pedidovista = new Pedidovista();
-    this.pedido.idmozo= 1;
-    this.pedido.idmesa = 1;
+    this.pedido.idmozo= 5;
+    this.pedido.idmesa = 8;
      
   }
 

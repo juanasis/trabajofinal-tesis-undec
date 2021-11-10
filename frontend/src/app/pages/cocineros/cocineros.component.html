@@ -1,10 +1,8 @@
 <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row">
-        <div class="col-md-4">
-          <tr *ngFor="let pedido of pedidos" >
-           <div *ngIf="true" class="card mb-4 box-shadow">
+    <div class="grid-container">
+         <!-- <tr  >-->
+        <div *ngFor="let pedido of pedidos">
+           <div class="grid-item1" *ngIf="true" class="card mb-4 box-shadow">
             <p> Mozo Fede </p>
             <th scope="row">Mesa Nro {{pedido.idMesa}} </th>
             <div class="card-body">            
@@ -23,11 +21,12 @@
               </div>
             </div>
           </div>
-        </tr>
-        </div>       
-      </div>
+        </div>
+       <!-- </tr>-->
+      
+  </div>       
+</div>
        
    
       
-    </div>
-  </div>
+   

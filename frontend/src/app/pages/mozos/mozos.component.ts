@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Mesa } from 'src/app/models/mesa';
 
 @Component({
   selector: 'app-mozos',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mozos.component.css']
 })
 export class MozosComponent implements OnInit {
-
-  constructor() { }
-
+  mesas: Mesa[] = [];
+  
+  
+  constructor(private http: HttpClient) { }
   ngOnInit(): void {
+    this.http.get("http://localhost:8080/mesas",{responseType: 'json'}).subscribe(
+      (resp:any) =>{
+     
+      this.mesas = resp.data;
+      console.log( resp.data);
+      })
   }
+  
 
 }

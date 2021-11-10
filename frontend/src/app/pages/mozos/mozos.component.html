@@ -6,50 +6,15 @@
 </style>
 </head>
   <body>
-    
-    <div class="grid-container">
-      <div class="grid-item1">1</div>
-      <div class="grid-item1">2</div>
-      <div class="grid-item1">3</div>
-      <div class="grid-item1">4</div>
-      <div class="grid-item1">5</div>
-      <div class="grid-item1">6</div>
-      <div class="grid-item1">7</div>
-      <div class="grid-item1">8</div>
-      <div class="grid-item1">9</div>
-      <div class="grid-item1">10</div>
-      <div class="grid-item1">1</div>
-      <div class="grid-item1">2</div>
-      <div class="grid-item1">3</div>
-      <div class="grid-item1">4</div>
-      <div class="grid-item1">5</div>
-      <div class="grid-item1">6</div>
-      <div class="grid-item1">7</div>
-      <div class="grid-item1">8</div>
-      <div class="grid-item1">9</div>
-      <div class="grid-item1">10</div>
-      <div class="grid-item1">1</div>
-      <div class="grid-item1">2</div>
-      <div class="grid-item1">3</div>
-      <div class="grid-item1">4</div>
-      <div class="grid-item1">5</div>
-      <div class="grid-item1">6</div>
-      <div class="grid-item1">7</div>
-      <div class="grid-item1">8</div>
-      <div class="grid-item1">9</div>
-      <div class="grid-item1">10</div>
-      <div class="grid-item1">1</div>
-      <div class="grid-item1">2</div>
-      <div class="grid-item1">3</div>
-      <div class="grid-item1">4</div>
-      <div class="grid-item1">5</div>
-      <div class="grid-item1">6</div>
-      <div class="grid-item1">7</div>
-      <div class="grid-item1">8</div>
-      <div class="grid-item1">9</div>
-      <div class="grid-item1">10</div>
-
+    <p></p>
+    <hr>
+    <p></p>
+    <div  class="grid-container">
+      <div *ngFor="let item of mesas">
+      <div class="grid-item1">{{item.id}}</div>
     </div>
+  </div>
+    
     
     </body>
     </html>

@@ -15,7 +15,7 @@ public class PedidoDtoCocina {
     private Date fecha;
     private List<ItemProductoCocinaDto> itemProductoCocinaDto = new ArrayList<>();
     private Integer idMesa;
-    private Integer idMozo;
+    private String nombreMozo;
 
 
     public PedidoDtoCocina() {
@@ -26,9 +26,9 @@ public class PedidoDtoCocina {
             this.id = pedido.getId();
             this.estado = pedido.getEstado();
             this.fecha = pedido.getFecha();
-            this.idMesa = pedido.getIdMesa();
+            this.idMesa = pedido.getNroMesa().getId();
             this.itemProductoCocinaDto = getProdutos(pedido.getItemsList());
-            this.idMozo = pedido.getIdMozo();
+            this.nombreMozo = pedido.getMozo().getNombre();
         }else{
             this.id = null;
         }
@@ -42,7 +42,7 @@ public class PedidoDtoCocina {
             itemDto.setNombre(item.getProducto().getNombre());
             itemDto.setCantidad(item.getCantidad());
             itemDto.setCategoria(item.getProducto().getCategoria());
-            if(item.getProducto().getCategoria().equalsIgnoreCase( "menu") ){
+            if(item.getProducto().getCategoria().equalsIgnoreCase( "menu") || item.getProducto().getCategoria().equalsIgnoreCase( "sanwiches") ){
                 result.add(itemDto);
 
             }
@@ -90,11 +90,11 @@ public class PedidoDtoCocina {
         this.idMesa = idMesa;
     }
 
-    public Integer getIdMozo() {
-        return idMozo;
+    public String getNombreMozo() {
+        return nombreMozo;
     }
 
-    public void setIdMozo(Integer idMozo) {
-        this.idMozo = idMozo;
+    public void setNombreMozo(String nombreMozo) {
+        this.nombreMozo = nombreMozo;
     }
 }

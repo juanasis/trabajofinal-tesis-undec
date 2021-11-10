@@ -1,5 +1,6 @@
 package ar.edu.undec.level.controller.dto;
 
+import ar.edu.undec.level.storage.entity.EstadoProducto;
 import ar.edu.undec.level.storage.entity.Producto;
 
 public class ProductoRequest {
@@ -9,6 +10,7 @@ public class ProductoRequest {
     public String categoria;
     public double precio;
     public String imgpath;
+    public EstadoProducto estadoProducto;
 
     public ProductoRequest() {
 
@@ -84,4 +86,7 @@ public class ProductoRequest {
         this.imgpath = imgpath;
     }
 
+    public EstadoProducto getEstado() {
+        return this.estadoProducto;
+    }
 }

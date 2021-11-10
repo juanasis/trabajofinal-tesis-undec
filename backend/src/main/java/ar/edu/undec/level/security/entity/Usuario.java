@@ -1,14 +1,17 @@
 package ar.edu.undec.level.security.entity;
 
+import ar.edu.undec.level.storage.entity.Pedido;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 @Entity
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private int id;
+    private Integer id;
     @NotNull
     private String nombre;
     @NotNull
@@ -21,9 +24,9 @@ public class Usuario {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"),
     inverseJoinColumns = @JoinColumn(name = "rol_id"))
-
     private Set<Rol> roles= new HashSet<>();
-
+    @OneToMany(mappedBy = "mozo", cascade = CascadeType.ALL)
+    private Collection<Pedido> pedidos;
     public Usuario( ) {
     }
 
@@ -34,7 +37,7 @@ public class Usuario {
         this.password = password;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

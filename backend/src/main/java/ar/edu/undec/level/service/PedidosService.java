@@ -1,12 +1,11 @@
 package ar.edu.undec.level.service;
 
 import ar.edu.undec.level.controller.dto.*;
+import ar.edu.undec.level.security.repository.UsuarioRepository;
 import ar.edu.undec.level.storage.entity.EstadoPedido;
 import ar.edu.undec.level.storage.entity.ItemPedido;
 import ar.edu.undec.level.storage.entity.Pedido;
-import ar.edu.undec.level.storage.repository.ItemPedidoRepository;
-import ar.edu.undec.level.storage.repository.PedidosRepository;
-import ar.edu.undec.level.storage.repository.ProductosRepository;
+import ar.edu.undec.level.storage.repository.*;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,14 +22,18 @@ public class PedidosService {
     private ItemPedidoRepository itemPedidoRepo;
     @Autowired
     private ProductosRepository productosRepo;
+    @Autowired
+    private MesaRepository mesaRepository;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
     static final Logger LOGGER = LoggerFactory.getLogger(PedidosService.class);
 
 
     public Response save(PedidoRequest request) {
         Response response = new Response();
         Pedido entity = new Pedido();
-        entity.setIdMozo(request.getIdMozo());
-        entity.setIdMesa(request.getIdMesa());
+        entity.setMozo(usuarioRepository.findById(request.getIdMozo()).get());
+        entity.setMesa(mesaRepository.findById(request.getIdMesa()).get());
         entity.setEstado(EstadoPedido.ENCOLA);
         entity.setFecha(nuevaFecha());
 

@@ -1,36 +1,27 @@
 package ar.edu.undec.level.storage.entity;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.io.Serializable;
-
+import java.util.Collection;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Mesa implements Serializable {
-
-    private Integer id;
-    private Integer numero;
-    private EstadoMesa estado;
-
-    private static final long serialVersionUID = 1L;
-
-
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(name = "estado")
+    private EstadoMesa estado;
+    @OneToMany(mappedBy = "mesa", cascade = CascadeType.ALL)
+    private Collection<Pedido> pedidos;
+    private static final long serialVersionUID = 1L;
+
     public Integer getId(){
         return id;
     }
-    @Column(name = "numero")
-    public Integer getNumero() {
-        return numero;
-    }
-    public void setNumero(Integer numero) {
-        this.numero = numero;
-    }
-    @Column(name = "estado")
+    public void setId(Integer id) {        this.id = id;    }
+
     public EstadoMesa getEstado() {
         return estado;
     }
@@ -39,5 +30,14 @@ public class Mesa implements Serializable {
     }
     public static long getSerialVersionUID() {
         return serialVersionUID;
+    }
+
+
+
+    public Collection<Pedido> getPedidosList() {
+        return pedidos;
+    }
+    public void setPedidosList(Collection<Pedido> pedidosList) {
+        this.pedidos = pedidosList;
     }
 }
