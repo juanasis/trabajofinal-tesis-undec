@@ -5,7 +5,7 @@ backend/target
 
 .idea/.name
 
-*.xml
+*.idea
 
 *.meta
 
